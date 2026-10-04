@@ -1,23 +1,26 @@
-# <CybersecurityManagementSystem>
-< A management system designed to keep track of security threats and numerous vulnerabilities across multiple devices >
+# Cybersecurity Management System
+A security tracking app designed for system administrators and cybersecurity analysts to monitor, prioritize, and mitigate system threats in real time. The application manages identified infrastructure vulnerabilities, enabling automated tracking of active VS remediated security incidents across network devices.
+
 ## Data model
 | Field | Type | Notes |
 | ----------- | ------------ | ------------------------------------ |
-| <name> | text | required, max 100 chars |
-| <done flag> | boolean | toggled from the list, default false |
-| <fixed tag> | fixed values | <value1>, <value2>, <value3> |
-| <category> | relation | <Cat1>, <Cat2>, <Cat3> |
+| threat_name | text | required, max 100 chars |
+| is_resolved | boolean | toggled from the list, default false |
+| severity | fixed values | Critical, High, Medium, Low |
+| department | relation | Security Operations Center, Incident Response, Network Security |
 | user | relation | the owner of the item (from week 11) |
+
 Sample data used across all stages:
-1. <item 1>, active, <tag>
-2. <item 2>, done, <tag>
-3. <item 3>, active, <tag>
+1. WannaCry.v2 Ransomware, active, Critical
+2. SQL Injection in Auth Endpoint, done, High
+3. Outdated SSL/TLS Protocol, active, Medium
+
 ## How to run
 Open `index.html` in a browser. No build step, no server.
 ## AI usage
 | Tool | Used for |
 | -------------- | ----------------------------------------- |
-| Gemini | <what exactly, e.g. CSS Grid, stage 1> |
+| Gemini | Assistance with domain mapping =adapting the Cybersecurity Management System database project to Stage 1 mockup data, structuring semantic HTML, further assistance with CSS styling |
 Details per stage: see the ai-log/ folder.
 ## Status
 - [x] Stage 1: static mockup
