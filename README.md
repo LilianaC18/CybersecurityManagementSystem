@@ -35,6 +35,19 @@ Details per stage: see the ai-log/ folder.
 | S1-R7 | visible focus, readable dark theme | [style.css#L176-L196](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/4d5d0f6c81eaf0b273ac175d1d5c49371c462b41/style.css#L176-L196) | Tab; dark mode |
 | S1-R8 | commit "Stage 1" pushed | [Commit Stage 1](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/4d5d0f6c81eaf0b273ac175d1d5c49371c462b41) | commit history |
 
+## Stage 2: data logic
+Plain JavaScript, no DOM. `taskuri.js` holds the array and the functions
+that read and change it. Results are printed in the browser console (F12).
+
+## AI usage
+| Tool | Used for |
+| -------------- | ----------------------------------------- |
+| Gemini | Assistance with domain mapping =adapting the Cybersecurity Management System database project to Stage 2, assistance with code writing and understanding concepts.|
+Details per stage: see the ai-log/ folder.
+
 ## Status
 - [x] Stage 1: static mockup
-☐ Stage 2: data logic in JavaScript
+- [x] Stage 2: data logic in JavaScript
+☐ Stage 3: Vite and React project
+
+

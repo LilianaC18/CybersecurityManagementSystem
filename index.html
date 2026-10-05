@@ -3,67 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cybersecurity Management System - mockup</title>
+  <title>Cybersecurity Management System - SOC Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="app-header">
-    <h1>Cybersecurity Management System</h1>
-    <p>Monitorizarea, prioritizarea și remedierea amenințărilor de securitate din cadrul unei infrastructuri.</p>
-    <p class="app-count">3 elemente, dintre care 2 active</p>
+    <div class="header-inner">
+      <div class="brand-area">
+        <span class="brand-badge"><span class="pulse-dot"></span> LIVE SHIELD</span>
+        <h1>Cybersecurity Management System</h1>
+        <p class="header-desc">Monitorizarea, prioritizarea și remedierea amenințărilor din infrastructură.</p>
+      </div>
+      <div class="stats-counter">
+        <span class="counter-label">Status Incident</span>
+        <span class="app-count"><strong>3</strong> Total &bull; <span class="active-pill">2 Active</span></span>
+      </div>
+    </div>
   </header>
+
   <main class="container">
     <section class="panel">
-      <h2>Adaugă amenințare</h2>
+      <div class="panel-header">
+        <div class="panel-icon">＋</div>
+        <h2>Adaugă amenințare</h2>
+      </div>
+
       <form class="item-form">
         <label>
-          Nume amenințare
-          <input type="text" name="titlu" placeholder="Ex: WannaCry Ransomware" required maxlength="100" />
+          <span>Nume amenințare</span>
+          <input type="text" name="titlu" placeholder="Ex: WannaCry.v2 / CVE-2026-8901" required maxlength="100" />
         </label>
+
         <label>
-          Severitate
+          <span>Nivel Severitate</span>
           <select name="eticheta">
-            <option value="critical">Critical</option>
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
+            <option value="critical">Critical (CVSS 9.0+)</option>
+            <option value="high">High (CVSS 7.0-8.9)</option>
+            <option value="medium">Medium (CVSS 4.0-6.9)</option>
+            <option value="low">Low (CVSS 0.1-3.9)</option>
           </select>
         </label>
-        <button type="submit">Adaugă</button>
+
+        <button type="submit">Înregistrează alertă</button>
       </form>
     </section>
 
     <section class="panel">
-      <h2>Amenințări active</h2>
-      <!-- Cand lista e goala: <p class="empty">Nu există nicio amenințare înregistrată.</p> -->
+      <div class="panel-header">
+        <div class="panel-icon shield-icon">⛨</div>
+        <h2>Amenințări active & tratate</h2>
+      </div>
+
       <ul class="item-list">
-        <li class="item-card">
+        <li class="item-card card-critical">
           <div class="card-info">
-            <h3>WannaCry.v2</h3>
-            <span class="badge badge-critical">Critical</span>
+            <div class="card-title-row">
+              <h3>WannaCry.v2</h3>
+              <span class="badge badge-critical">Critical</span>
+            </div>
+            <span class="incident-id">INC-8921 &bull; Detecție EDR</span>
           </div>
-          <span class="status">Activ</span>
+          <span class="status status-active"><span class="dot-indicator"></span>Activ</span>
         </li>
 
         <li class="item-card done">
           <div class="card-info">
-            <h3>SQL Injection in Auth</h3>
-            <span class="badge badge-high">High</span>
+            <div class="card-title-row">
+              <h3>SQL Injection in Auth</h3>
+              <span class="badge badge-high">High</span>
+            </div>
+            <span class="incident-id">INC-8904 &bull; Patch aplicat</span>
           </div>
-          <span class="status">Remediat</span>
+          <span class="status status-resolved">✓ Remediat</span>
         </li>
 
-        <li class="item-card">
+        <li class="item-card card-medium">
           <div class="card-info">
-            <h3>Outdated SSL/TLS</h3>
-            <span class="badge badge-medium">Medium</span>
+            <div class="card-title-row">
+              <h3>Outdated SSL/TLS Cipher</h3>
+              <span class="badge badge-medium">Medium</span>
+            </div>
+            <span class="incident-id">INC-8890 &bull; Network Scan</span>
           </div>
-          <span class="status">Activ</span>
+          <span class="status status-active"><span class="dot-indicator"></span>Activ</span>
         </li>
       </ul>
     </section>
   </main>
 
-  <footer class="app-footer">Proiect Tehnologii Web</footer>
+  <footer class="app-footer">
+    <p>Proiect Tehnologii Web &bull; Inspirat de arhitectura Bitdefender</p>
+  </footer>
+  <script src="amenintari.js"></script>
 </body>
 </html>
