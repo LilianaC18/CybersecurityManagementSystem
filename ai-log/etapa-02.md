@@ -7,13 +7,13 @@
 
 ## Key requests
 ### 1. Data model adaptation & immutability in JavaScript
--Asked: How to adapt the Stage 2 data structures (taskuri.js from the guide) to the Cybersecurity Management System domain (amenintari.js), implementing immutable helper functions (listeazaTitluri, numaraActive, cautaDupaTitlu, nextId, adaugaAmenintare, comutaRemediat, stergeAmenintare).
--Got: Pure JavaScript functions relying on non-mutating array methods (map, filter, reduce) and object spread syntax ({ ...t, remediat: !t.remediat }) that return new references instead of mutating the source array.
--Changed or rejected: Retained the project-specific threat entity fields (id, titlu, severitate, remediat) and mapped severity strictly to cybersecurity levels (Critical, High, Medium, Low) rather than generic task priorities.
+- Asked: How to adapt the Stage 2 data structures (taskuri.js from the guide) to the Cybersecurity Management System domain (amenintari.js), implementing immutable helper functions (listeazaTitluri, numaraActive, cautaDupaTitlu, nextId, adaugaAmenintare, comutaRemediat, stergeAmenintare).
+- Got: Pure JavaScript functions relying on non-mutating array methods (map, filter, reduce) and object spread syntax ({ ...t, remediat: !t.remediat }) that return new references instead of mutating the source array.
+- Changed or rejected: Retained the project-specific threat entity fields (id, titlu, severitate, remediat) and mapped severity strictly to cybersecurity levels (Critical, High, Medium, Low) rather than generic task priorities.
 ### 2. Explain JavaScript code
--Asked: Explain in detail some sections of the code that I did not fully understand.
--Got: Further explanations of the concepts
--Changed or rejected: - (added comments in my code for better understanding)
+- Asked: Explain in detail some sections of the code that I did not fully understand.
+- Got: Further explanations of the concepts
+- Changed or rejected: - (added comments in my code for better understanding)
 
 ### What I learned / what did not work
 Understood why array and object immutability ([...lista, nou], {...t, remediat: !t.remediat}) is essential for predictable state management, avoiding hidden side effects across modules and directly laying the foundation for React state updates in subsequent stages.
