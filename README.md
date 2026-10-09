@@ -45,6 +45,18 @@ that read and change it. Results are printed in the browser console (F12).
 | Gemini | Assistance with domain mapping =adapting the Cybersecurity Management System database project to Stage 2, assistance with code writing and understanding concepts.|
 Details per stage: see the ai-log/ folder.
 
+## Verification Checklist (Stage 2)
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S2-R1 | JS file linked, logs on page load| README.md | open page, F12 |
+| S2-R2 | AI usage section | README.md#ai-usage | read |
+| S2-R3 | AI log for stage 1 | ai-log/etapa-01.md | read |
+| S2-R4 | header, form (text + select), 3 cards with own data | [index.html#L10-L65](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/4d5d0f6c81eaf0b273ac175d1d5c49371c462b41/index.html#L10-L65) | open the page |
+| S2-R5 | finished card looks different | [style.css#L160-L167](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/4d5d0f6c81eaf0b273ac175d1d5c49371c462b41/style.css#L160-L167) | look at the card |
+| S2-R6 | 2 columns on desktop, 1 under 700px | [style.css#L181-L183](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/4d5d0f6c81eaf0b273ac175d1d5c49371c462b41/style.css#L181-L183) | resize < 700px |
+| S2-R7 | visible focus, readable dark theme | [style.css#L176-L196](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/4d5d0f6c81eaf0b273ac175d1d5c49371c462b41/style.css#L176-L196) | Tab; dark mode |
+
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
