@@ -53,12 +53,12 @@ function adaugaAmenintare(lista, titlu, severitate = "Medium") {
   const titluCurat = titlu ? titlu.trim() : ""; //stergem spatiile goale de la inceput si sfarsit
 
   if (!titluCurat) {
-    console.warn("Validare eșuată: Titlul nu poate fi gol.");
+    console.log("Validare eșuată: Titlul nu poate fi gol.");
     return lista;
   }
 
   if (!SEVERITATI.includes(severitate)) {
-    console.warn(`Validare eșuată: Severitate invalidă "${severitate}". Valori permise: ${SEVERITATI.join(", ")}`);
+    console.log(`Validare eșuată: Severitate invalidă "${severitate}". Valori permise: ${SEVERITATI.join(", ")}`);
                                                                       //const SEVERITATI = ["Low", "Medium", "High", "Critical"];
                                                                       //=> Valori permise: Low, Medium, High, Critical
     return lista;

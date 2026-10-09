@@ -3,32 +3,86 @@
 }
 
 :root {
-  --bg: #090c10;
-  --bg-gradient: radial-gradient(circle at 50% 0%, #171d2b 0%, #090c10 70%);
-  --panel-bg: rgba(18, 24, 38, 0.85);
-  --card-bg: #141c2c;
-  --card-hover: #192338;
-  
-  --text: #f0f4fc;
-  --text-muted: #8b9bb4;
-  --border: rgba(255, 255, 255, 0.08);
+  --bg: #f4f5f7;
+  --bg-gradient: radial-gradient(circle at 50% 0%, #e2e8f0 0%, #f4f5f7 70%);
+  --panel-bg: rgba(255, 255, 255, 0.9);
+  --card-bg: #ffffff;
+  --card-hover: #f1f5f9;
+  --input-bg: #ffffff;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --border: rgba(0, 0, 0, 0.1);
   --border-focus: rgba(230, 0, 0, 0.6);
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --header-text: #0f172a;
+  --counter-bg: rgba(0, 0, 0, 0.04);
 
   --brand-red: #e60000;
   --brand-red-hover: #ff1a1a;
   --brand-red-glow: rgba(230, 0, 0, 0.25);
+  --brand-badge-bg: rgba(230, 0, 0, 0.08);
+  --brand-badge-border: rgba(230, 0, 0, 0.2);
 
-  --badge-critical: #ef4444;
-  --badge-critical-bg: rgba(239, 68, 68, 0.15);
-  --badge-high: #f97316;
-  --badge-high-bg: rgba(249, 115, 22, 0.15);
-  --badge-medium: #eab308;
-  --badge-medium-bg: rgba(234, 179, 8, 0.15);
-  --badge-low: #10b981;
-  --badge-low-bg: rgba(16, 185, 129, 0.15);
+  --badge-critical: #dc2626;
+  --badge-critical-bg: rgba(220, 38, 38, 0.12);
+  --badge-critical-border: rgba(220, 38, 38, 0.3);
+  --badge-high: #ea580c;
+  --badge-high-bg: rgba(234, 88, 12, 0.12);
+  --badge-high-border: rgba(234, 88, 12, 0.3);
+  --badge-medium: #ca8a04;
+  --badge-medium-bg: rgba(202, 138, 4, 0.12);
+  --badge-medium-border: rgba(202, 138, 4, 0.3);
+  --badge-low: #16a34a;
+  --badge-low-bg: rgba(22, 163, 74, 0.12);
+  --badge-low-border: rgba(22, 163, 74, 0.3);
+
+  --status-active: #dc2626;
+  --status-resolved: #16a34a;
+  --card-done-bg: rgba(241, 245, 249, 0.6);
+  --card-hover-border: rgba(0, 0, 0, 0.2);
+  --btn-text: #ffffff;
 
   --font-main: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #090c10;
+    --bg-gradient: radial-gradient(circle at 50% 0%, #171d2b 0%, #090c10 70%);
+    --panel-bg: rgba(18, 24, 38, 0.85);
+    --card-bg: #141c2c;
+    --card-hover: #192338;
+    --input-bg: #0f1523;
+    --text: #f0f4fc;
+    --text-muted: #8b9bb4;
+    --border: rgba(255, 255, 255, 0.08);
+    --header-bg: rgba(10, 14, 23, 0.95);
+    --header-text: #ffffff;
+    --counter-bg: rgba(255, 255, 255, 0.03);
+
+    --brand-badge-bg: rgba(230, 0, 0, 0.1);
+    --brand-badge-border: rgba(230, 0, 0, 0.25);
+
+    --badge-critical: #ef4444;
+    --badge-critical-bg: rgba(239, 68, 68, 0.15);
+    --badge-critical-border: rgba(239, 68, 68, 0.3);
+    --badge-high: #f97316;
+    --badge-high-bg: rgba(249, 115, 22, 0.15);
+    --badge-high-border: rgba(249, 115, 22, 0.3);
+    --badge-medium: #eab308;
+    --badge-medium-bg: rgba(234, 179, 8, 0.15);
+    --badge-medium-border: rgba(234, 179, 8, 0.3);
+    --badge-low: #10b981;
+    --badge-low-bg: rgba(16, 185, 129, 0.15);
+    --badge-low-border: rgba(16, 185, 129, 0.3);
+
+    --status-active: #f87171;
+    --status-resolved: #4ade80;
+    --card-done-bg: rgba(14, 20, 31, 0.5);
+    --card-hover-border: rgba(255, 255, 255, 0.16);
+    --btn-text: #ffffff;
+  }
 }
 
 body {
@@ -47,7 +101,7 @@ body {
 
 .app-header {
   position: relative;
-  background: rgba(10, 14, 23, 0.95);
+  background: var(--header-bg);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(12px);
   padding: 32px 20px 24px;
@@ -82,10 +136,10 @@ body {
   letter-spacing: 0.1em;
   font-weight: 700;
   color: var(--brand-red);
-  background: rgba(230, 0, 0, 0.1);
+  background: var(--brand-badge-bg);
   padding: 4px 10px;
   border-radius: 4px;
-  border: 1px solid rgba(230, 0, 0, 0.25);
+  border: 1px solid var(--brand-badge-border);
   margin: 0;
 }
 
@@ -109,7 +163,7 @@ body {
   font-size: 2.1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  color: var(--header-text);
   text-align: center;
 }
 
@@ -122,7 +176,7 @@ body {
 
 .stats-counter {
   text-align: center;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--counter-bg);
   border: 1px solid var(--border);
   padding: 8px 18px;
   border-radius: 9999px;
@@ -156,7 +210,7 @@ body {
   margin: 32px auto;
   padding: 0 20px;
   display: grid;
-  grid-template-columns: 340px 1fr;
+  grid-template-columns: 1fr 2fr;
   gap: 24px;
   align-items: start;
   flex: 1;
@@ -185,7 +239,7 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  background: rgba(230, 0, 0, 0.15);
+  background: var(--brand-badge-bg);
   color: var(--brand-red);
   font-weight: bold;
   font-size: 1rem;
@@ -200,7 +254,7 @@ body {
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: #fff;
+  color: var(--text);
 }
 
 .item-form {
@@ -223,7 +277,7 @@ body {
 .item-form input,
 .item-form select {
   padding: 12px 14px;
-  background: #0f1523;
+  background: var(--input-bg);
   border: 1px solid var(--border);
   border-radius: 8px;
   color: var(--text);
@@ -242,7 +296,7 @@ body {
 .item-form button {
   margin-top: 6px;
   background: var(--brand-red);
-  color: #ffffff;
+  color: var(--btn-text);
   border: none;
   padding: 13px;
   border-radius: 8px;
@@ -304,7 +358,7 @@ body {
 
 .item-card:hover {
   background: var(--card-hover);
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: var(--card-hover-border);
   transform: translateX(2px);
 }
 
@@ -324,7 +378,7 @@ body {
   margin: 0;
   font-size: 0.98rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text);
   word-break: break-word;
 }
 
@@ -349,25 +403,25 @@ body {
 .badge-critical {
   color: var(--badge-critical);
   background: var(--badge-critical-bg);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  border: 1px solid var(--badge-critical-border);
 }
 
 .badge-high {
   color: var(--badge-high);
   background: var(--badge-high-bg);
-  border: 1px solid rgba(249, 115, 22, 0.3);
+  border: 1px solid var(--badge-high-border);
 }
 
 .badge-medium {
   color: var(--badge-medium);
   background: var(--badge-medium-bg);
-  border: 1px solid rgba(234, 179, 8, 0.3);
+  border: 1px solid var(--badge-medium-border);
 }
 
 .badge-low {
   color: var(--badge-low);
   background: var(--badge-low-bg);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid var(--badge-low-border);
 }
 
 .status {
@@ -382,25 +436,25 @@ body {
 }
 
 .status-active {
-  color: #f87171;
+  color: var(--status-active);
 }
 
 .status-active .dot-indicator {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #f87171;
-  box-shadow: 0 0 6px #f87171;
+  background: var(--status-active);
+  box-shadow: 0 0 6px var(--status-active);
 }
 
 .status-resolved {
-  color: #4ade80;
+  color: var(--status-resolved);
 }
 
 .item-card.done {
   opacity: 0.55;
-  background: rgba(14, 20, 31, 0.5);
-  border-color: rgba(255, 255, 255, 0.04);
+  background: var(--card-done-bg);
+  border-color: var(--border);
 }
 
 .item-card.done h3 {
@@ -422,7 +476,7 @@ body {
   outline-offset: 2px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
   .brand-badge {
     position: static;
     margin-bottom: 8px;
