@@ -20,7 +20,7 @@ Open `index.html` in a browser. No build step, no server.
 ## AI usage
 | Tool | Used for |
 | -------------- | ----------------------------------------- |
-| Gemini | Assistance with domain mapping =adapting the Cybersecurity Management System database project to Stage 1 mockup data, structuring semantic HTML, further assistance with CSS styling |
+| Gemini | Assistance with domain mapping (adapting the Cybersecurity Management System database project to Stage 1 & Stage 2), semantic HTML layout, CSS styling architecture, implementing immutable helper functions in plain JavaScript, explaining code sections that I did not fully unerstand. |
 Details per stage: see the ai-log/ folder.
 
 ## Verification Checklist (Stage 1)
@@ -36,14 +36,8 @@ Details per stage: see the ai-log/ folder.
 | S1-R8 | commit "Stage 1" pushed | [Commit Stage 1](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/4d5d0f6c81eaf0b273ac175d1d5c49371c462b41) | commit history |
 
 ## Stage 2: data logic
-Plain JavaScript, no DOM. `taskuri.js` holds the array and the functions
+Plain JavaScript, no DOM. `amenintari.js` holds the array and the functions
 that read and change it. Results are printed in the browser console (F12).
-
-## AI usage
-| Tool | Used for |
-| -------------- | ----------------------------------------- |
-| Gemini | Assistance with domain mapping =adapting the Cybersecurity Management System database project to Stage 2, assistance with code writing and understanding concepts.|
-Details per stage: see the ai-log/ folder.
 
 ## Verification Checklist (Stage 2)
 | ID | Requirement | Where (permalink) | How to check |
@@ -60,6 +54,6 @@ Details per stage: see the ai-log/ folder.
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
-☐ Stage 3: Vite and React project
+- ☐ Stage 3: Vite and React project
 
 
