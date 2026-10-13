@@ -60,6 +60,17 @@ npm install
 npm run dev
 Then open the address printed in the terminal (http://localhost:5173).
 
+## Verification Checklist (Stage 3)
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S3-R1 | npm run dev starts without errors | [frontend/package.json#L6-L11](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/ecfd6a3d929e71196c5124d78a9fccb1aff1b54c/frontend/package.json#L6-L11) | npm install, npm run dev |
+| S3-R2 | app name and counter computed from data  | [frontend/src/App.jsx#L23-L46](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/ecfd6a3d929e71196c5124d78a9fccb1aff1b54c/frontend/src/App.jsx#L23-L46) | edit data, save |
+| S3-R3 | data from README, not from the example | [frontend/src/App.jsx#L1-L20](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/ecfd6a3d929e71196c5124d78a9fccb1aff1b54c/frontend/src/App.jsx#L1-L20) | compare with README |
+| S3-R4 | stage 1 styles reused | [frontend/src/App.css](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/ecfd6a3d929e71196c5124d78a9fccb1aff1b54c/frontend/src/App.css#L5) | look at the page |
+| S3-R5 | node_modules ignored, build passes | [frontend/.gitignore#L10-L11](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/ecfd6a3d929e71196c5124d78a9fccb1aff1b54c/frontend/.gitignore#L10-L11) | npm run build |
+| S3-R6 | README Stage 3 section + AI log | [README.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/ecfd6a3d929e71196c5124d78a9fccb1aff1b54c/README.md?plain=1#L54),[]() | read |
+| S3-R7 | | []() | |
+
 
 ## Status
 - [x] Stage 1: static mockup
