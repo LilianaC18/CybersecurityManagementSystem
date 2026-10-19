@@ -1,3 +1,6 @@
+
+import ThreatList from "./components/ThreatList.jsx";
+
 const amenintari = [
   {
     id: 1,
@@ -52,8 +55,7 @@ export default function App() {
             <h2>Amenințări active &amp; tratate</h2>
           </div>
 
-          {/* Temporar: date brute; componentele apar în Etapa 4 */}
-          <pre>{JSON.stringify(amenintari, null, 2)}</pre>
+          <ThreatList amenintari={amenintari} />
         </section>
       </main>
 
