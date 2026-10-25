@@ -73,9 +73,20 @@ Then open the address printed in the terminal (http://localhost:5173).
 
 ## Stage 4: components
 The list is rendered from the data, through two components:
-- `TaskList` receives the whole array and renders one card per item
-- `TaskCard` receives a single item through props and displays it
+- `ThreatList` receives the whole array and renders one card per item
+- `ThreatCard` receives a single item through props and displays it
 
+### Stage 4: Checklist
+
+| ID | Requirement | Where (permalink) | How to check |
+|---|---|---|---|
+| S4-R1 | 2+ components in src/components/ |  | open folder |
+| S4-R2 | card receives data through props |  | read |
+| S4-R3 | map + key={id}, no console warnings |  | F12, Console |
+| S4-R4 | message for empty list |  | set array to `[]` |
+| S4-R5 | state changes the card look |  | toggle `remediat` flag |
+| S4-R6 | README Stage 4 section + AI log |  | read |
+| S4-R7 | commit “Stage 4” pushed | commit history | commit history |
 
 ## Status
 - [x] Stage 1: static mockup

@@ -353,6 +353,14 @@ body {
   background: var(--badge-critical);
 }
 
+.item-card.card-high::before {
+  background: var(--badge-high);
+}
+
+.item-card.card-low::before {
+  background: var(--badge-low);
+}
+
 .item-card.card-medium::before {
   background: var(--badge-medium);
 }
@@ -486,4 +494,10 @@ body {
   .container {
     grid-template-columns: 1fr;
   }
+}
+
+.empty {
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 0;
 }
