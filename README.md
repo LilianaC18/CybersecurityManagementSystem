@@ -76,17 +76,18 @@ The list is rendered from the data, through two components:
 - `ThreatList` receives the whole array and renders one card per item
 - `ThreatCard` receives a single item through props and displays it
 
+
 ### Stage 4: Checklist
 
 | ID | Requirement | Where (permalink) | How to check |
 |---|---|---|---|
-| S4-R1 | 2+ components in src/components/ |  | open folder |
-| S4-R2 | card receives data through props |  | read |
-| S4-R3 | map + key={id}, no console warnings |  | F12, Console |
-| S4-R4 | message for empty list |  | set array to `[]` |
-| S4-R5 | state changes the card look |  | toggle `remediat` flag |
-| S4-R6 | README Stage 4 section + AI log |  | read |
-| S4-R7 | commit “Stage 4” pushed | commit history | commit history |
+| S4-R1 | 2+ components in src/components/ | [frontend/src/components/](https://github.com/LilianaC18/CybersecurityManagementSystem/tree/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components) | open folder |
+| S4-R2 | card receives data through props | [ThreatCard.jsx#L8-L37](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components/ThreatCard.jsx#L8-L37) | read |
+| S4-R3 | map + key={id}, no console warnings | [ThreatList.jsx#L8-L14](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components/ThreatList.jsx#L8-L14) | F12, Console |
+| S4-R4 | message for empty list | [ThreatList.jsx#L4-L6](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components/ThreatList.jsx#L4-L6) | set array to `[]` |
+| S4-R5 | state changes the card look | [ThreatCard.jsx#L10-L12](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components/ThreatCard.jsx#L10-L12) | toggle `remediat` flag |
+| S4-R6 | README Stage 4 section + AI log | [README.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/README.md?plain=1#L74),[etapa-04.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/ai-log/etapa-04.md?plain=1#L1) | read |
+| S4-R7 | commit "Stage 4" pushed | [commit Stage 4](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/6350231bbdda7866d00c1e0ae7251b7176617b19) | commit history |
 
 ## Status
 - [x] Stage 1: static mockup
