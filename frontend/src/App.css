@@ -47,7 +47,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #090c10;
     --bg-gradient: radial-gradient(circle at 50% 0%, #171d2b 0%, #090c10 70%);
     --panel-bg: rgba(18, 24, 38, 0.85);
@@ -83,6 +83,44 @@
     --card-hover-border: rgba(255, 255, 255, 0.16);
     --btn-text: #ffffff;
   }
+}
+
+/* Etapa 5*/
+:root[data-theme="dark"] {
+  --bg: #090c10;
+  --bg-gradient: radial-gradient(circle at 50% 0%, #171d2b 0%, #090c10 70%);
+  --panel-bg: rgba(18, 24, 38, 0.85);
+  --card-bg: #141c2c;
+  --card-hover: #192338;
+  --input-bg: #0f1523;
+  --text: #f0f4fc;
+  --text-muted: #8b9bb4;
+  --border: rgba(255, 255, 255, 0.08);
+  --header-bg: rgba(10, 14, 23, 0.95);
+  --header-text: #ffffff;
+  --counter-bg: rgba(255, 255, 255, 0.03);
+
+  --brand-badge-bg: rgba(230, 0, 0, 0.1);
+  --brand-badge-border: rgba(230, 0, 0, 0.25);
+
+  --badge-critical: #ef4444;
+  --badge-critical-bg: rgba(239, 68, 68, 0.15);
+  --badge-critical-border: rgba(239, 68, 68, 0.3);
+  --badge-high: #f97316;
+  --badge-high-bg: rgba(249, 115, 22, 0.15);
+  --badge-high-border: rgba(249, 115, 22, 0.3);
+  --badge-medium: #eab308;
+  --badge-medium-bg: rgba(234, 179, 8, 0.15);
+  --badge-medium-border: rgba(234, 179, 8, 0.3);
+  --badge-low: #10b981;
+  --badge-low-bg: rgba(16, 185, 129, 0.15);
+  --badge-low-border: rgba(16, 185, 129, 0.3);
+
+  --status-active: #f87171;
+  --status-resolved: #4ade80;
+  --card-done-bg: rgba(14, 20, 31, 0.5);
+  --card-hover-border: rgba(255, 255, 255, 0.16);
+  --btn-text: #ffffff;
 }
 
 body {
@@ -500,4 +538,67 @@ body {
   color: var(--text-muted);
   font-style: italic;
   margin: 0;
+}
+
+.item-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  flex: 1;
+  min-width: 0;
+}
+
+.item-main input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--brand-red);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.btn-danger {
+  border: 1px solid var(--badge-critical);
+  background: transparent;
+  color: var(--badge-critical);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+  background: var(--badge-critical);
+  color: #ffffff;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--counter-bg);
+  color: var(--header-text);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--brand-red);
 }

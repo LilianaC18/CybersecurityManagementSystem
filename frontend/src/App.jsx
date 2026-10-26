@@ -1,7 +1,7 @@
-
+import { useState } from "react";
 import ThreatList from "./components/ThreatList.jsx";
 
-const amenintari = [
+const AMENINTARI_INITIALE = [
   {
     id: 1,
     titlu: "WannaCry.v2 Ransomware",
@@ -22,12 +22,46 @@ const amenintari = [
   },
 ];
 
+
+function temaInitiala() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+}
+
 export default function App() {
+  const [amenintari, setAmenintari] = useState(AMENINTARI_INITIALE);
+  const [tema, setTema] = useState(temaInitiala);
+
+  function handleToggle(id) {
+    setAmenintari((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, remediat: !t.remediat } : t))
+    );
+  }
+
+  function handleDelete(id) {
+    setAmenintari((prev) => prev.filter((t) => t.id !== id));
+  }
+
+  function handleTema() {
+    const noua = tema === "dark" ? "light" : "dark";
+    setTema(noua);
+    document.documentElement.dataset.theme = noua;
+  }
+
   const active = amenintari.filter((t) => !t.remediat).length;
 
   return (
     <>
       <header className="app-header">
+        <button
+          className="theme-toggle"
+          onClick={handleTema}
+          aria-pressed={tema === "dark"}
+        >
+          {tema === "dark" ? "Mod luminos" : "Mod întunecat"}
+        </button>
+
         <div className="header-inner">
           <div className="brand-area">
             <span className="brand-badge">
@@ -55,7 +89,11 @@ export default function App() {
             <h2>Amenințări active &amp; tratate</h2>
           </div>
 
-          <ThreatList amenintari={amenintari} />
+          <ThreatList
+            amenintari={amenintari}
+            onToggle={handleToggle}
+            onDelete={handleDelete}
+          />
         </section>
       </main>
 
