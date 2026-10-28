@@ -30,9 +30,9 @@ Details per stage: see the ai-log/ folder.
 ## Verification Checklist (Stage 1)
 | ID | Requirement | Where (permalink) | How to check |
 | --- | --- | --- | --- |
-| S1-R1 | README: description, fields, sample data, how to run | README.md | read |
-| S1-R2 | AI usage section | README.md#ai-usage | read |
-| S1-R3 | AI log for stage 1 | ai-log/etapa-01.md | read |
+| S1-R1 | README: description, fields, sample data, how to run | [README.md#L1-L19](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/4d5d0f6c81eaf0b273ac175d1d5c49371c462b41/README.md?plain=1#L1-L19) | read |
+| S1-R2 | AI usage section | [README.md#L20-L24](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/4d5d0f6c81eaf0b273ac175d1d5c49371c462b41/README.md?plain=1#L20-L24) | read |
+| S1-R3 | AI log for stage 1 | [ai-log/etapa-01.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/4d5d0f6c81eaf0b273ac175d1d5c49371c462b41/ai-log/etapa-01.md?plain=1#L1-L18) | read |
 | S1-R4 | header, form (text + select), 3 cards with own data | [index.html#L10-L65](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/4d5d0f6c81eaf0b273ac175d1d5c49371c462b41/index.html#L10-L65) | open the page |
 | S1-R5 | finished card looks different | [style.css#L160-L167](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/4d5d0f6c81eaf0b273ac175d1d5c49371c462b41/style.css#L160-L167) | look at the card |
 | S1-R6 | 2 columns on desktop, 1 under 700px | [style.css#L181-L183](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/4d5d0f6c81eaf0b273ac175d1d5c49371c462b41/style.css#L181-L183) | resize < 700px |
@@ -46,7 +46,7 @@ that read and change it. Results are printed in the browser console (F12).
 ## Verification Checklist (Stage 2)
 | ID | Requirement | Where (permalink) | How to check |
 | --- | --- | --- | --- |
-| S2-R1 | JS file linked, logs on page load| [index.html#L101](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d3ec0d83bece65ad83d3545e3b1a6377b1db9b90/index.html#L101) | open page, F12 |
+| S2-R1 | JS file linked, logs on page load | [index.html#L101-L102](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d3ec0d83bece65ad83d3545e3b1a6377b1db9b90/index.html#L101-L102) | open page, F12 |
 | S2-R2 | 3+ items with id, name, state, tag | [amenintari.js#L2-L21](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d3ec0d83bece65ad83d3545e3b1a6377b1db9b90/amenintari.js#L2-L21) | read |
 | S2-R3 | list, count, search, add, toggle, delete | [amenintari.js#L26-L92](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d3ec0d83bece65ad83d3545e3b1a6377b1db9b90/amenintari.js#L26-L92) | console output |
 | S2-R4 | add rejects empty name and invalid tag | [amenintari.js#L53-L65](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d3ec0d83bece65ad83d3545e3b1a6377b1db9b90/amenintari.js#L53-L65) | last 2 console lines |
@@ -110,7 +110,7 @@ which is what stage 6 and stage 10 fix.
 | S5-R4 | header counter derived, not in state | [App.jsx#L52](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/App.jsx#L52), [App.jsx#L77-L80](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/App.jsx#L77-L80) | toggle, watch header |
 | S5-R5 | immutable updates (no push, splice, assignment) | [App.jsx#L36-L44](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/App.jsx#L36-L44) | read |
 | S5-R6 | light / dark toggle: state + data-theme on html | [App.jsx#L26-L34](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/App.jsx#L26-L34), [App.jsx#L46-L63](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/App.jsx#L46-L63), [App.css#L49-L124](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/App.css#L49-L124) | click the button, both system themes |
-| S5-R7 | no console warnings; README + AI log | [README.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/main/README.md#stage-5-local-state-and-events), [ai-log/etapa-05.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/main/ai-log/etapa-05.md) | F12, Console |
+| S5-R7 | no console warnings; README + AI log | [README.md#L96-L100](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/368d3629c625e0d7674008e2717fe4f08fb60362/README.md?plain=1#L96-L100), [ai-log/etapa-05.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/368d3629c625e0d7674008e2717fe4f08fb60362/ai-log/etapa-05.md?plain=1) | F12, Console |
 | S5-R8 | commit "Stage 5" pushed | [commit Stage 5](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd) | commit history |
 
 ## Status
