@@ -15,12 +15,16 @@ Sample data used across all stages:
 2. SQL Injection in Auth Endpoint, done, High
 3. Outdated SSL/TLS Protocol, active, Medium
 
-## How to run
-Open `index.html` in a browser. No build step, no server.
+## How to run (stages 1–2: static mockup)
+Open `mockup/index.html` in a browser. No build step, no server.
+For the React app (from stage 3), see the How to run section under Stage 3.
+
 ## AI usage
 | Tool | Used for |
 | -------------- | ----------------------------------------- |
-| Gemini | Assistance with domain mapping (adapting the Cybersecurity Management System database project to Stage 1 & Stage 2), semantic HTML layout, CSS styling architecture, implementing immutable helper functions in plain JavaScript, explaining code sections that I did not fully unerstand. |
+| Gemini | Assistance with domain mapping (adapting the Cybersecurity Management System database project to Stage 1 & Stage 2), semantic HTML layout, CSS styling architecture, implementing immutable helper functions in plain JavaScript, fixing Vite/npm setup errors (stage 3), React components and props (stage 4), React state and the light/dark toggle (stage 5) explaining code sections that I did not fully understand. |
+| Claude | Stage 5: reviewing the project, finding a Windows-only npm package that broke `npm install` on macOS/Linux, a narrow-screen layout fix, and a draft of the Stage 5 README section and checklist. |
+
 Details per stage: see the ai-log/ folder.
 
 ## Verification Checklist (Stage 1)
@@ -89,12 +93,33 @@ The list is rendered from the data, through two components:
 | S4-R6 | README Stage 4 section + AI log | [README.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/README.md?plain=1#L74),[etapa-04.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/ai-log/etapa-04.md?plain=1#L1) | read |
 | S4-R7 | commit "Stage 4" pushed | [commit Stage 4](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/6350231bbdda7866d00c1e0ae7251b7176617b19) | commit history |
 
+## Stage 5: local state and events
+The list lives in React state. Checking and deleting work from the page,
+and the counters in the header follow automatically. A button in the
+header switches between light and dark mode. Changes are lost on refresh,
+which is what stage 6 and stage 10 fix.
+
+
+### Stage 5: Checklist
+
+| ID | Requirement | Where (permalink) | How to check |
+|---|---|---|---|
+| S5-R1 | list kept in useState, in App | [App.jsx#L33](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/App.jsx#L33) | read |
+| S5-R2 | toggling changes state and card look | [App.jsx#L36-L40](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/App.jsx#L36-L40), [ThreatCard.jsx#L10-L21](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/components/ThreatCard.jsx#L10-L21) | click a checkbox |
+| S5-R3 | delete removes the item | [App.jsx#L42-L44](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/App.jsx#L42-L44), [ThreatCard.jsx#L44-L50](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/components/ThreatCard.jsx#L44-L50) | click Șterge |
+| S5-R4 | header counter derived, not in state | [App.jsx#L52](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/App.jsx#L52), [App.jsx#L77-L80](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/App.jsx#L77-L80) | toggle, watch header |
+| S5-R5 | immutable updates (no push, splice, assignment) | [App.jsx#L36-L44](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/App.jsx#L36-L44) | read |
+| S5-R6 | light / dark toggle: state + data-theme on html | [App.jsx#L26-L34](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/App.jsx#L26-L34), [App.jsx#L46-L63](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/App.jsx#L46-L63), [App.css#L49-L124](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd/frontend/src/App.css#L49-L124) | click the button, both system themes |
+| S5-R7 | no console warnings; README + AI log | [README.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/main/README.md#stage-5-local-state-and-events), [ai-log/etapa-05.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/main/ai-log/etapa-05.md) | F12, Console |
+| S5-R8 | commit "Stage 5" pushed | [commit Stage 5](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd) | commit history |
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
-- [X] Stage 3: Vite and React project
+- [x] Stage 3: Vite and React project
 - [x] Stage 4: components rendered from data
-- [ ] Stage 5: local state and events
+- [x] Stage 5: local state and events
+- [ ] Stage 6: loading data from a mock API
 
 
 
