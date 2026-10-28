@@ -19,6 +19,7 @@
 ### 3. Summary of the most important concepts that I need to know from Stage 5
 - Asked: What I need to learn from this stage
 - Got: a full breakdown of the most important concepts
+- Changed or rejected: used it as study notes for the evaluation; no code was changed.
 
 ### 4. Reviewing the code
 - Asked: a full review of the code
