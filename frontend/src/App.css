@@ -602,3 +602,22 @@ body {
 .theme-toggle:hover {
   border-color: var(--brand-red);
 }
+
+
+@media (max-width: 700px) {
+  .theme-toggle {
+    position: static;
+    display: block;
+    margin: 0 0 12px auto;
+  }
+
+  .item-card {
+    flex-wrap: wrap;
+  }
+
+  .card-actions {
+    width: 100%;
+    justify-content: space-between;
+    padding-left: 30px; 
+  }
+}
