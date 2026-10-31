@@ -1,7 +1,7 @@
 # Stage 5: AI log
 ## Tools
 - Gemini
-- Claude
+- Claude (checking stages 1–5 against the checklists; fixing sample data, CSS color variables and checklist permalinks)
 ## Conversations
 - https://share.gemini.google/wR3yFZorCEtY
 
