@@ -8,7 +8,7 @@
 ### 1. Data model adaptation, component setup in React (Vite) & concept explanations
 - Asked: How to resolve environment and execution errors (PSSecurityException, native Rolldown/Vite binding issues), understand core Stage 3 concepts (Node.js, npm, Vite, JSX, React components), and adapt the lab template to a custom domain dataset (amenintari for a Cybersecurity Management System)
 - Got: Step-by-step PowerShell execution policy configuration and node_modules reinstallation commands. An explanation of React/Vite fundamentals and a line-by-line verification of App.jsx
-- Changed or rejected: -
+- Changed or rejected: did not reinstall Node, only cleared node_modules
 
 
 ## What I learned / what did not work
