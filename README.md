@@ -23,7 +23,7 @@ For the React app (from stage 3), see the How to run section under Stage 3.
 | Tool | Used for |
 | -------------- | ----------------------------------------- |
 | Gemini | Assistance with domain mapping (adapting the Cybersecurity Management System database project to Stage 1 & Stage 2), semantic HTML layout, CSS styling architecture, implementing immutable helper functions in plain JavaScript, fixing Vite/npm setup errors (stage 3), React components and props (stage 4), React state and the light/dark toggle (stage 5) explaining code sections that I did not fully understand. |
-| Claude | Stage 5: reviewing the project, finding a Windows-only npm package that broke `npm install` on macOS/Linux, a narrow-screen layout fix, and a draft of the Stage 5 README section and checklist. |
+| Claude | Stage 5: reviewing the project, finding a Windows-only npm package that broke `npm install` on macOS/Linux, a narrow-screen layout fix, git rev-parse HEAD command which is extremely helpful, help with checking my overall project against the checklist |
 
 Details per stage: see the ai-log/ folder.
 
