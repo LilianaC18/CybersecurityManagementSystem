@@ -87,7 +87,7 @@ The list is rendered from the data, through two components:
 | ID | Requirement | Where (permalink) | How to check |
 |---|---|---|---|
 | S4-R1 | 2+ components in src/components/ | [frontend/src/components/](https://github.com/LilianaC18/CybersecurityManagementSystem/tree/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components) | open folder |
-| S4-R2 | card receives data through props | [ThreatCard.jsx#L9-L38](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components/ThreatCard.jsx#L9-L38) | read |
+| S4-R2 | card receives data through props | [ThreatCard.jsx#L1-L54](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/7dec6f20c0bfb7c81477374d319a79f10c852c01/frontend/src/components/ThreatCard.jsx#L1-L54) | read |
 | S4-R3 | map + key={id}, no console warnings | [ThreatList.jsx#L9-L15](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components/ThreatList.jsx#L9-L15) | F12, Console |
 | S4-R4 | message for empty list | [ThreatList.jsx#L5-L7](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components/ThreatList.jsx#L5-L7) | set array to `[]` |
 | S4-R5 | state changes the card look | [ThreatCard.jsx#L11-L13](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components/ThreatCard.jsx#L11-L13) | toggle `remediat` flag |
