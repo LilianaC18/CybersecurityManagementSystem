@@ -1,8 +1,8 @@
 const ETICHETE_SEVERITATE = {
-  Critical: "Critical",
-  High: "High",
-  Medium: "Medium",
-  Low: "Low",
+  Critical: "Critică",
+  High: "Ridicată",
+  Medium: "Medie",
+  Low: "Scăzută",
 };
 
 export default function ThreatCard({ amenintare, onToggle, onDelete }) {
