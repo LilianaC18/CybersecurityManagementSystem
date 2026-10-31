@@ -41,6 +41,9 @@
   --card-done-bg: rgba(241, 245, 249, 0.6);
   --card-hover-border: rgba(0, 0, 0, 0.2);
   --btn-text: #ffffff;
+  --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  --btn-shadow: 0 4px 16px rgba(230, 0, 0, 0.35);
+  --btn-shadow-hover: 0 6px 20px rgba(230, 0, 0, 0.45);
 
   --font-main: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -260,7 +263,7 @@ body {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow);
   backdrop-filter: blur(8px);
 }
 
@@ -344,13 +347,13 @@ body {
   letter-spacing: 0.02em;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 16px rgba(230, 0, 0, 0.35);
+  box-shadow: var(--btn-shadow);
 }
 
 .item-form button:hover {
   background: var(--brand-red-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(230, 0, 0, 0.45);
+  box-shadow: var(--btn-shadow-hover);
 }
 
 .item-list {
@@ -579,7 +582,7 @@ body {
 
 .btn-danger:hover {
   background: var(--badge-critical);
-  color: #ffffff;
+  color: var(--btn-text);
 }
 
 .theme-toggle {
