@@ -52,25 +52,27 @@ that read and change it. Results are printed in the browser console (F12).
 | S2-R4 | add rejects empty name and invalid tag | [amenintari.js#L53-L65](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d3ec0d83bece65ad83d3545e3b1a6377b1db9b90/amenintari.js#L53-L65) | last 2 console lines |
 | S2-R5 | original array unchanged after add | [amenintari.js#L99-L106](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d3ec0d83bece65ad83d3545e3b1a6377b1db9b90/amenintari.js#L99-L106) | console line |
 | S2-R6 | README Stage 2 section + AI log | [README.md#stage-2-data-logic](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/76bdad1e0420e3b49aa730799e468c84714f664d/README.md?plain=1#L38),[ai-log/etapa-02.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/76bdad1e0420e3b49aa730799e468c84714f664d/ai-log/etapa-02.md?plain=1#L1) | read |
-| S2-R7 | commit “Stage 2” pushed | [commit “Stage 2” pushed](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/7b6a50b9010956e84073f2e076467e6f933fd9e2) | commit history |
+| S2-R7 | commit “Stage 2” pushed | [commit Stage 2](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/d3ec0d83bece65ad83d3545e3b1a6377b1db9b90) | commit history |
 
 
 ## Stage 3: Vite and React project
 The app now lives in `frontend/`, built with Vite. The data from stage 2
 moved into the main component; the list is still printed raw.
 ## How to run
+```
 cd frontend
 npm install
 npm run dev
+```
 Then open the address printed in the terminal (http://localhost:5173).
 
 ## Verification Checklist (Stage 3)
 | ID | Requirement | Where (permalink) | How to check |
 | --- | --- | --- | --- |
-| S3-R1 | npm run dev starts without errors | [frontend/package.json#L6-L11](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/ecfd6a3d929e71196c5124d78a9fccb1aff1b54c/frontend/package.json#L6-L11) | npm install, npm run dev |
+| S3-R1 | npm run dev starts without errors | [frontend/package.json#L6-L11](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/b6dcbb196a70a7a8031d927946a52c1a349b3cb8/frontend/package.json#L6-L11) | npm install, npm run dev |
 | S3-R2 | app name and counter computed from data  | [frontend/src/App.jsx#L23-L46](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/ecfd6a3d929e71196c5124d78a9fccb1aff1b54c/frontend/src/App.jsx#L23-L46) | edit data, save |
 | S3-R3 | data from README, not from the example | [frontend/src/App.jsx#L1-L20](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/ecfd6a3d929e71196c5124d78a9fccb1aff1b54c/frontend/src/App.jsx#L1-L20) | compare with README |
-| S3-R4 | stage 1 styles reused | [frontend/src/App.css](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/ecfd6a3d929e71196c5124d78a9fccb1aff1b54c/frontend/src/App.css#L5) | look at the page |
+| S3-R4 | stage 1 styles reused | [frontend/src/App.css](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/ecfd6a3d929e71196c5124d78a9fccb1aff1b54c/frontend/src/App.css) | look at the page |
 | S3-R5 | node_modules ignored, build passes | [frontend/.gitignore#L10-L11](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/ecfd6a3d929e71196c5124d78a9fccb1aff1b54c/frontend/.gitignore#L10-L11) | npm run build |
 | S3-R6 | README Stage 3 section + AI log | [README.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/ecfd6a3d929e71196c5124d78a9fccb1aff1b54c/README.md?plain=1#L54),[etapa-03.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/97c64246b87da6766a8af76af9a269e693635575/ai-log/etapa-03.md?plain=1#L1) | read |
 | S3-R7 | commit “Stage 3” pushed | [commit Stage 3](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/ecfd6a3d929e71196c5124d78a9fccb1aff1b54c) | commit history |
@@ -86,10 +88,10 @@ The list is rendered from the data, through two components:
 | ID | Requirement | Where (permalink) | How to check |
 |---|---|---|---|
 | S4-R1 | 2+ components in src/components/ | [frontend/src/components/](https://github.com/LilianaC18/CybersecurityManagementSystem/tree/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components) | open folder |
-| S4-R2 | card receives data through props | [ThreatCard.jsx#L8-L37](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components/ThreatCard.jsx#L8-L37) | read |
-| S4-R3 | map + key={id}, no console warnings | [ThreatList.jsx#L8-L14](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components/ThreatList.jsx#L8-L14) | F12, Console |
-| S4-R4 | message for empty list | [ThreatList.jsx#L4-L6](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components/ThreatList.jsx#L4-L6) | set array to `[]` |
-| S4-R5 | state changes the card look | [ThreatCard.jsx#L10-L12](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components/ThreatCard.jsx#L10-L12) | toggle `remediat` flag |
+| S4-R2 | card receives data through props | [ThreatCard.jsx#L9-L38](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components/ThreatCard.jsx#L9-L38) | read |
+| S4-R3 | map + key={id}, no console warnings | [ThreatList.jsx#L9-L15](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components/ThreatList.jsx#L9-L15) | F12, Console |
+| S4-R4 | message for empty list | [ThreatList.jsx#L5-L7](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components/ThreatList.jsx#L5-L7) | set array to `[]` |
+| S4-R5 | state changes the card look | [ThreatCard.jsx#L11-L13](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/frontend/src/components/ThreatCard.jsx#L11-L13) | toggle `remediat` flag |
 | S4-R6 | README Stage 4 section + AI log | [README.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/README.md?plain=1#L74),[etapa-04.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/43a19f2fdf2de969adede245b02324bda5738b92/ai-log/etapa-04.md?plain=1#L1) | read |
 | S4-R7 | commit "Stage 4" pushed | [commit Stage 4](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/6350231bbdda7866d00c1e0ae7251b7176617b19) | commit history |
 
