@@ -27,7 +27,7 @@ export default function ThreatCard({ amenintare, onToggle, onDelete }) {
             </span>
           </div>
           <span className="incident-id">
-            INC-{amenintare.id.toString().padStart(4, "0")} &bull; Detecție EDR
+              INC-{amenintare.id.toString().padStart(4, "0")} &bull; {amenintare.sursa}
           </span>
         </div>
       </label>

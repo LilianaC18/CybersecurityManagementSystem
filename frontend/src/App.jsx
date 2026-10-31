@@ -7,18 +7,21 @@ const AMENINTARI_INITIALE = [
     titlu: "WannaCry.v2 Ransomware",
     remediat: false,
     severitate: "Critical",
+    sursa: "Detecție EDR",
   },
   {
     id: 2,
     titlu: "SQL Injection in Auth Endpoint",
     remediat: true,
     severitate: "High",
+    sursa: "Patch aplicat",
   },
   {
     id: 3,
     titlu: "Outdated SSL/TLS Protocol",
     remediat: false,
     severitate: "Medium",
+    sursa: "Network Scan",
   },
 ];
 

@@ -8,6 +8,7 @@ A security tracking app designed for system administrators and cybersecurity ana
 | is_resolved | boolean | toggled from the list, default false |
 | severity | fixed values | Critical, High, Medium, Low |
 | department | relation | Security Operations Center, Incident Response, Network Security |
+| source | text | optional, where the threat was detected (e.g. Detecție EDR, Network Scan) |
 | user | relation | the owner of the item (from week 11) |
 
 Sample data used across all stages:
