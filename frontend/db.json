@@ -1,0 +1,9 @@
+{
+  "amenintari": [
+    { "id": 1, "titlu": "WannaCry.v2 Ransomware", "remediat": false, "severitate": "Critical", "sursa": "Detecție EDR" },
+    { "id": 2, "titlu": "SQL Injection in Auth Endpoint", "remediat": true, "severitate": "High", "sursa": "Patch aplicat" },
+    { "id": 3, "titlu": "Outdated SSL/TLS Protocol", "remediat": false, "severitate": "Medium", "sursa": "Network Scan" },
+    { "id": 4, "titlu": "Phishing Campaign - Departament HR", "remediat": false, "severitate": "High", "sursa": "Email Gateway" },
+    { "id": 5, "titlu": "Brute-force SSH pe serverul de test", "remediat": true, "severitate": "Low", "sursa": "Firewall" }
+  ]
+}
