@@ -44,6 +44,8 @@
   --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
   --btn-shadow: 0 4px 16px rgba(230, 0, 0, 0.35);
   --btn-shadow-hover: 0 6px 20px rgba(230, 0, 0, 0.45);
+  --error-bg: #fdf2f8;
+  --error-border: #fbcfe8;
 
   --font-main: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -85,6 +87,8 @@
     --card-done-bg: rgba(14, 20, 31, 0.5);
     --card-hover-border: rgba(255, 255, 255, 0.16);
     --btn-text: #ffffff;
+    --error-bg: #3b1d2e;
+    --error-border: #6b2a4a;
   }
 }
 
@@ -124,6 +128,8 @@
   --card-done-bg: rgba(14, 20, 31, 0.5);
   --card-hover-border: rgba(255, 255, 255, 0.16);
   --btn-text: #ffffff;
+  --error-bg: #3b1d2e;
+  --error-border: #6b2a4a;
 }
 
 body {
@@ -199,8 +205,24 @@ body {
   100% { transform: scale(0.9); opacity: 0.6; }
 }
 
-.app-header h1 {
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
   margin: 12px 0 8px;
+}
+
+/* Scutul animat stă lângă titlu, la înălțimea lui */
+.hero-shield {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 8px var(--brand-red-glow));
+}
+
+.app-header h1 {
+  margin: 0;
   font-size: 2.1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -621,6 +643,40 @@ body {
   .card-actions {
     width: 100%;
     justify-content: space-between;
-    padding-left: 30px; 
+    padding-left: 30px;
   }
+
+  .title-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .hero-shield {
+    width: 44px;
+    height: 44px;
+  }
+
+  .app-header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Etapa 6: stări de încărcare și de eroare */
+.info {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.error {
+  color: var(--badge-critical);
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 0;
+}
+
+.error code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
 }

@@ -24,7 +24,7 @@ For the React app (from stage 3), see the How to run section under Stage 3.
 | Tool | Used for |
 | -------------- | ----------------------------------------- |
 | Gemini | Assistance with domain mapping (adapting the Cybersecurity Management System database project to Stage 1 & Stage 2), semantic HTML layout, CSS styling architecture, implementing immutable helper functions in plain JavaScript, fixing Vite/npm setup errors (stage 3), React components and props (stage 4), React state and the light/dark toggle (stage 5) explaining code sections that I did not fully understand. |
-| Claude | Stage 5: reviewing the project, finding a Windows-only npm package that broke `npm install` on macOS/Linux, a narrow-screen layout fix, git rev-parse HEAD command which is extremely helpful, help with checking my overall project against the checklist |
+| Claude | Stage 5: reviewing the project, finding a Windows-only npm package that broke `npm install` on macOS/Linux, a narrow-screen layout fix, git rev-parse HEAD command which is extremely helpful, help with checking my overall project against the checklist; Stage 6: loading the list from json-server with `useEffect` (loading / error states), fixing the oversized header shield, project review |
 
 Details per stage: see the ai-log/ folder.
 
@@ -99,7 +99,7 @@ The list is rendered from the data, through two components:
 The list lives in React state. Checking and deleting work from the page,
 and the counters in the header follow automatically. A button in the
 header switches between light and dark mode. Changes are lost on refresh,
-which is what stage 6 and stage 10 fix.
+which is what stage 7 fixes.
 
 
 ### Stage 5: Checklist
@@ -115,14 +115,24 @@ which is what stage 6 and stage 10 fix.
 | S5-R7 | no console warnings; README + AI log | [README.md#L96-L100](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/368d3629c625e0d7674008e2717fe4f08fb60362/README.md?plain=1#L96-L100), [ai-log/etapa-05.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/54f9cccda3a57fe2cc75de3e1e6b38c4d3a00b1a/ai-log/etapa-05.md?plain=1) | F12, Console |
 | S5-R8 | commit "Stage 5" pushed | [commit Stage 5](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/cd43ff9dff3cda5c2b70d2df19d4dfb3a23292fd) | commit history |
 
+## Stage 6: data from a mock API
+The list is served by json-server from `frontend/db.json` (resource
+`amenintari`). The app fetches it on load, through `src/api.js`, and shows
+a loading message while waiting and an error message when the API is down.
+The API address is read from `VITE_API_URL` (see `frontend/.env.example`).
+Checking and deleting still change only the local state (saved in stage 7).
+
+```
+cd frontend
+npm run api   # terminal 1, http://localhost:3001/amenintari
+npm run dev   # terminal 2, http://localhost:5173
+```
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
 - [x] Stage 4: components rendered from data
 - [x] Stage 5: local state and events
-- [ ] Stage 6: loading data from a mock API
-
-
-
-
+- [x] Stage 6: data from a mock API
+- [ ] Stage 7: form and validation

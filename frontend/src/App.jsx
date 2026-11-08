@@ -1,30 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ThreatList from "./components/ThreatList.jsx";
-
-const AMENINTARI_INITIALE = [
-  {
-    id: 1,
-    titlu: "WannaCry.v2 Ransomware",
-    remediat: false,
-    severitate: "Critical",
-    sursa: "Detecție EDR",
-  },
-  {
-    id: 2,
-    titlu: "SQL Injection in Auth Endpoint",
-    remediat: true,
-    severitate: "High",
-    sursa: "Patch aplicat",
-  },
-  {
-    id: 3,
-    titlu: "Outdated SSL/TLS Protocol",
-    remediat: false,
-    severitate: "Medium",
-    sursa: "Network Scan",
-  },
-];
-
+import { fetchAmenintari } from "./api.js";
+import shieldImg from "./assets/shield.svg";
 
 function temaInitiala() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -33,9 +10,34 @@ function temaInitiala() {
 }
 
 export default function App() {
-  const [amenintari, setAmenintari] = useState(AMENINTARI_INITIALE);
+  // Etapa 6: lista pornește goală, datele vin de la API (db.json)
+  const [amenintari, setAmenintari] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [tema, setTema] = useState(temaInitiala);
 
+  // Rulează o singură dată, după prima randare
+  useEffect(() => {
+    let ignore = false; // nu se setează state dacă componenta a dispărut între timp
+
+    async function load() {
+      try {
+        const data = await fetchAmenintari();
+        if (!ignore) setAmenintari(data);
+      } catch (err) {
+        if (!ignore) setError(err.message);
+      } finally {
+        if (!ignore) setLoading(false);
+      }
+    }
+
+    load();
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
+  // În Etapa 6 modificările rămân locale: se pierd la refresh (rezolvat în Etapa 7)
   function handleToggle(id) {
     setAmenintari((prev) =>
       prev.map((t) => (t.id === id ? { ...t, remediat: !t.remediat } : t))
@@ -70,7 +72,10 @@ export default function App() {
             <span className="brand-badge">
               <span className="pulse-dot"></span> LIVE SHIELD
             </span>
-            <h1>Cybersecurity Management System</h1>
+            <div className="title-row">
+              <img src={shieldImg} alt="" className="hero-shield" />
+              <h1>Cybersecurity Management System</h1>
+            </div>
             <p className="header-desc">
               Monitorizarea, prioritizarea și remedierea amenințărilor din infrastructură.
             </p>
@@ -92,11 +97,19 @@ export default function App() {
             <h2>Amenințări active &amp; tratate</h2>
           </div>
 
-          <ThreatList
-            amenintari={amenintari}
-            onToggle={handleToggle}
-            onDelete={handleDelete}
-          />
+          {loading && <p className="info">Se încarcă amenințările...</p>}
+          {error && (
+            <p className="error">
+              Nu am putut încărca datele: {error}. Rulează <code>npm run api</code>?
+            </p>
+          )}
+          {!loading && !error && (
+            <ThreatList
+              amenintari={amenintari}
+              onToggle={handleToggle}
+              onDelete={handleDelete}
+            />
+          )}
         </section>
       </main>
 
