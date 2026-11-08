@@ -46,6 +46,10 @@
   --btn-shadow-hover: 0 6px 20px rgba(230, 0, 0, 0.45);
   --error-bg: #fdf2f8;
   --error-border: #fbcfe8;
+  --grid-line: rgba(15, 23, 42, 0.06);
+  --skeleton-base: #e2e8f0;
+  --skeleton-shine: #f1f5f9;
+  --header-glow: 0.3;
 
   --font-main: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -89,6 +93,10 @@
     --btn-text: #ffffff;
     --error-bg: #3b1d2e;
     --error-border: #6b2a4a;
+    --grid-line: rgba(255, 255, 255, 0.04);
+    --skeleton-base: #182133;
+    --skeleton-shine: #222d44;
+    --header-glow: 0.6;
   }
 }
 
@@ -130,6 +138,10 @@
   --btn-text: #ffffff;
   --error-bg: #3b1d2e;
   --error-border: #6b2a4a;
+  --grid-line: rgba(255, 255, 255, 0.04);
+  --skeleton-base: #182133;
+  --skeleton-shine: #222d44;
+  --header-glow: 0.6;
 }
 
 body {
@@ -679,4 +691,269 @@ body {
 .error code {
   font-family: var(--font-mono);
   font-size: 0.85em;
+}
+
+/* Design: fundal tehnic în header (grid fin, estompat spre margini) */
+.app-header {
+  overflow: hidden;
+}
+
+.app-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 70% 90% at 50% 0%, #000 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 90% at 50% 0%, #000 30%, transparent 100%);
+  pointer-events: none;
+}
+
+.app-header::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -120px;
+  width: 520px;
+  height: 260px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, var(--brand-red-glow), transparent 70%);
+  opacity: var(--header-glow);
+  pointer-events: none;
+}
+
+.app-header .header-inner {
+  z-index: 1;
+}
+
+/* Design: indicatori de securitate (KPI) */
+.stats-strip {
+  max-width: 1080px;
+  width: 100%;
+  margin: 32px auto 0;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stats-strip + .container {
+  margin-top: 24px;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.kpi-card,
+.severity-card {
+  position: relative;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+}
+
+.kpi-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  --kpi-accent: var(--brand-red);
+}
+
+.kpi-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--kpi-accent);
+}
+
+.kpi-brand { --kpi-accent: var(--brand-red); }
+.kpi-critical { --kpi-accent: var(--badge-critical); }
+.kpi-medium { --kpi-accent: var(--badge-medium); }
+.kpi-low { --kpi-accent: var(--badge-low); }
+
+.kpi-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.kpi-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.kpi-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--kpi-accent);
+  flex-shrink: 0;
+}
+
+.kpi-value {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.kpi-value small {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-left: 2px;
+}
+
+.kpi-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.kpi-card:not(.kpi-brand):not(.kpi-low) .kpi-sub {
+  color: var(--kpi-accent);
+  font-weight: 600;
+}
+
+/* Design: bara de distribuție pe severitate */
+.severity-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.severity-bar {
+  display: flex;
+  gap: 3px;
+  height: 10px;
+  border-radius: 9999px;
+  overflow: hidden;
+  background: var(--counter-bg);
+}
+
+.severity-seg {
+  flex-basis: 0;
+  transition: flex-grow 0.4s ease;
+}
+
+.seg-critical { background: var(--badge-critical); }
+.seg-high { background: var(--badge-high); }
+.seg-medium { background: var(--badge-medium); }
+.seg-low { background: var(--badge-low); }
+
+.severity-legend {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.severity-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.severity-legend strong {
+  font-family: var(--font-mono);
+  color: var(--text);
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+/* Design: skeleton cât timp se încarcă datele */
+.skeleton-list {
+  margin-top: 16px;
+}
+
+.skeleton-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.skeleton-line {
+  display: block;
+  height: 12px;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-base) 25%,
+    var(--skeleton-shine) 50%,
+    var(--skeleton-base) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.skeleton-title { width: 45%; }
+.skeleton-meta { width: 25%; height: 10px; }
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-line,
+  .pulse-dot {
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .stats-strip {
+    margin-top: 20px;
+    gap: 12px;
+  }
+
+  .kpi-grid {
+    gap: 12px;
+  }
+
+  .kpi-card {
+    padding: 14px 16px;
+  }
+
+  .kpi-label {
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+  }
+
+  .kpi-value {
+    font-size: 1.6rem;
+  }
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ThreatList from "./components/ThreatList.jsx";
+import ThreatStats from "./components/ThreatStats.jsx";
 import { fetchAmenintari } from "./api.js";
 import shieldImg from "./assets/shield.svg";
 
@@ -90,6 +91,8 @@ export default function App() {
         </div>
       </header>
 
+      {!loading && !error && <ThreatStats amenintari={amenintari} />}
+
       <main className="container">
         <section className="panel">
           <div className="panel-header">
@@ -97,7 +100,19 @@ export default function App() {
             <h2>Amenințări active &amp; tratate</h2>
           </div>
 
-          {loading && <p className="info">Se încarcă amenințările...</p>}
+          {loading && (
+            <>
+              <p className="info">Se încarcă amenințările...</p>
+              <ul className="item-list skeleton-list" aria-hidden="true">
+                {[1, 2, 3].map((n) => (
+                  <li key={n} className="skeleton-card">
+                    <span className="skeleton-line skeleton-title" />
+                    <span className="skeleton-line skeleton-meta" />
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
           {error && (
             <p className="error">
               Nu am putut încărca datele: {error}. Rulează <code>npm run api</code>?
