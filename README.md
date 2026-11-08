@@ -128,6 +128,18 @@ npm run api   # terminal 1, http://localhost:3001/amenintari
 npm run dev   # terminal 2, http://localhost:5173
 ```
 
+### Stage 6: Checklist
+
+| ID | Requirement | Where (permalink) | How to check |
+|---|---|---|---|
+| S6-R1 | npm run api starts, route shows JSON | [package.json#L11](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/f2b0050914b0b2ee31c9db136b9a4fce33d840d9/frontend/package.json#L11), [db.json](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/f2b0050914b0b2ee31c9db136b9a4fce33d840d9/frontend/db.json) | open localhost:3001/amenintari |
+| S6-R2 | data no longer in React code | [App.jsx#L14](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/f2b0050914b0b2ee31c9db136b9a4fce33d840d9/frontend/src/App.jsx#L14) | read |
+| S6-R3 | loading message while waiting | [App.jsx#L100](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/f2b0050914b0b2ee31c9db136b9a4fce33d840d9/frontend/src/App.jsx#L100) | --delay 4000 |
+| S6-R4 | error message when API is down | [App.jsx#L101-L105](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/f2b0050914b0b2ee31c9db136b9a4fce33d840d9/frontend/src/App.jsx#L101-L105) | stop npm run api, refresh |
+| S6-R5 | fetch only in api.js, URL from env | [api.js#L3-L11](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/f2b0050914b0b2ee31c9db136b9a4fce33d840d9/frontend/src/api.js#L3-L11), [.env.example](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/f2b0050914b0b2ee31c9db136b9a4fce33d840d9/frontend/.env.example) | search for fetch |
+| S6-R6 | README Stage 6 section + AI log | [README.md#L118-L129](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/f2b0050914b0b2ee31c9db136b9a4fce33d840d9/README.md?plain=1#L118-L129), [ai-log/etapa-06.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/f2b0050914b0b2ee31c9db136b9a4fce33d840d9/ai-log/etapa-06.md?plain=1) | read |
+| S6-R7 | commit "Stage 6" pushed | [commit Stage 6](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/f2b0050914b0b2ee31c9db136b9a4fce33d840d9) | commit history |
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
