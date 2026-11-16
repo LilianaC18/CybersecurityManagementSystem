@@ -1,12 +1,7 @@
 import { useState } from "react";
+import { SEVERITATI } from "../constants.js";
+import styles from "./ThreatForm.module.css";
 
-// Valorile fixe pentru severitate (aceleași chei ca în db.json)
-const SEVERITATI = [
-  { value: "Critical", label: "Critică (CVSS 9.0+)" },
-  { value: "High", label: "Ridicată (CVSS 7.0-8.9)" },
-  { value: "Medium", label: "Medie (CVSS 4.0-6.9)" },
-  { value: "Low", label: "Scăzută (CVSS 0.1-3.9)" },
-];
 const TITLU_MAX = 100;
 const SURSA_MAX = 50;
 
@@ -71,7 +66,7 @@ export default function ThreatForm({ onAdd }) {
 
   return (
     <form
-      className="item-form"
+      className={styles.form}
       onSubmit={handleSubmit}
       noValidate
       data-testid="form"
@@ -99,7 +94,7 @@ export default function ThreatForm({ onAdd }) {
         >
           {SEVERITATI.map((s) => (
             <option key={s.value} value={s.value}>
-              {s.label}
+              {s.label} ({s.cvss})
             </option>
           ))}
         </select>
@@ -124,7 +119,12 @@ export default function ThreatForm({ onAdd }) {
         </p>
       )}
 
-      <button type="submit" disabled={trimite} data-testid="form-submit">
+      <button
+        type="submit"
+        className={`btn ${styles.submit}`}
+        disabled={trimite}
+        data-testid="form-submit"
+      >
         {trimite ? "Se salvează..." : "Înregistrează alertă"}
       </button>
     </form>

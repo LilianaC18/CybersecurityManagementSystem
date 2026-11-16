@@ -24,7 +24,7 @@ For the React app (from stage 3), see the How to run section under Stage 3.
 | Tool | Used for |
 | -------------- | ----------------------------------------- |
 | Gemini | Assistance with domain mapping (adapting the Cybersecurity Management System database project to Stage 1 & Stage 2), semantic HTML layout, CSS styling architecture, implementing immutable helper functions in plain JavaScript, fixing Vite/npm setup errors (stage 3), React components and props (stage 4), React state and the light/dark toggle (stage 5) explaining code sections that I did not fully understand. |
-| Claude | Stage 5: reviewing the project, finding a Windows-only npm package that broke `npm install` on macOS/Linux, a narrow-screen layout fix, git rev-parse HEAD command which is extremely helpful, help with checking my overall project against the checklist; Stage 6: loading the list from json-server with `useEffect` (loading / error states), fixing the oversized header shield, project review; Stage 7: the controlled form with validation, saving add / toggle / delete through the API, `tw.json` and the `data-testid` attributes, end-to-end testing |
+| Claude | Stage 5: reviewing the project, finding a Windows-only npm package that broke `npm install` on macOS/Linux, a narrow-screen layout fix, git rev-parse HEAD command which is extremely helpful, help with checking my overall project against the checklist; Stage 6: loading the list from json-server with `useEffect` (loading / error states), fixing the oversized header shield, project review; Stage 7: the controlled form with validation, saving add / toggle / delete through the API, `tw.json` and the `data-testid` attributes, end-to-end testing; Stage 8: React Router pages and the detail page, moving the styles to CSS Modules |
 
 Details per stage: see the ai-log/ folder.
 
@@ -169,6 +169,35 @@ npm run dev   # terminal 2, http://localhost:5173
 | S7-R7 | README Stage 7 section + AI log | [README.md#L143-L157](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/README.md?plain=1#L143-L157), [ai-log/etapa-07.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/ai-log/etapa-07.md?plain=1) | read |
 | S7-R8 | commit "Stage 7" pushed | [commit Stage 7](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/914558f743ee9364ac58e566ab0a42fa77e4abab) | commit history |
 
+## Stage 8: routing and detail page
+Four pages behind React Router, all drawn inside one shared `Layout` (header
+with `NavLink` navigation, theme toggle, footer, `<Outlet />`):
+
+| Route | Page | What it shows |
+| --- | --- | --- |
+| `/` | `AmenintariPage` | KPI panel, report form and the threat list |
+| `/amenintari/:id` | `AmenintareDetaliuPage` | one threat, loaded with `fetchAmenintare(id)`: incident code, severity with CVSS range, status, detection source, target remediation time |
+| `/despre` | `DesprePage` | what the app does and the stack |
+| `*` | `NotFoundPage` | the app's 404 page |
+
+The title of each card is a `Link` to its detail page, so moving between pages
+never reloads the document. A missing id (e.g. `/amenintari/999`) shows an
+error message and a way back, not an empty screen. The detail route uses the
+resource name from `tw.json` (`amenintari`).
+
+Styles moved next to their components as CSS Modules (`*.module.css`);
+`index.css` (the former `App.css`) keeps only the color variables, the
+light/dark themes and the shared classes (`.panel`, `.btn`, `.btn-danger`,
+`.badge-*`, `.status-*`, `.error`, `.info`, `.empty`). The fixed severity
+values and their labels live in `src/constants.js`.
+
+```
+cd frontend
+npm install   # adds react-router-dom
+npm run api   # terminal 1, http://localhost:3001/amenintari
+npm run dev   # terminal 2, http://localhost:5173
+```
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
@@ -177,4 +206,5 @@ npm run dev   # terminal 2, http://localhost:5173
 - [x] Stage 5: local state and events
 - [x] Stage 6: data from a mock API
 - [x] Stage 7: form and validation
-- [ ] Stage 8: routing and detail page
+- [x] Stage 8: routing and detail page
+- [ ] Stage 9: own backend with Express

@@ -1,13 +1,9 @@
-// Panou de indicatori: toate valorile sunt calculate din listă, fără state propriu.
-const SEVERITATI = [
-  { cheie: "Critical", eticheta: "Critică", clasa: "critical", pondere: 10 },
-  { cheie: "High", eticheta: "Ridicată", clasa: "high", pondere: 6 },
-  { cheie: "Medium", eticheta: "Medie", clasa: "medium", pondere: 3 },
-  { cheie: "Low", eticheta: "Scăzută", clasa: "low", pondere: 1 },
-];
+import { SEVERITATI } from "../constants.js";
+import styles from "./ThreatStats.module.css";
 
+// Panou de indicatori: toate valorile sunt calculate din listă, fără state propriu.
 function pondere(severitate) {
-  return SEVERITATI.find((s) => s.cheie === severitate)?.pondere ?? 0;
+  return SEVERITATI.find((s) => s.value === severitate)?.pondere ?? 0;
 }
 
 // Scorul de risc (0–100): cât din „greutatea” totală a amenințărilor e încă activă
@@ -29,7 +25,7 @@ function nivelRisc(scor) {
 function Icon({ children }) {
   return (
     <svg
-      className="kpi-icon"
+      className={styles.kpiIcon}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -56,93 +52,93 @@ export default function ThreatStats({ amenintari }) {
 
   const distributie = SEVERITATI.map((s) => ({
     ...s,
-    numar: amenintari.filter((t) => t.severitate === s.cheie).length,
+    numar: amenintari.filter((t) => t.severitate === s.value).length,
   }));
 
   return (
-    <section className="stats-strip" aria-label="Indicatori de securitate">
-      <div className="kpi-grid">
-        <article className="kpi-card kpi-brand">
-          <div className="kpi-top">
-            <span className="kpi-label">Total incidente</span>
+    <section className={styles.strip} aria-label="Indicatori de securitate">
+      <div className={styles.kpiGrid}>
+        <article className={`${styles.kpiCard} ${styles.brand}`}>
+          <div className={styles.kpiTop}>
+            <span className={styles.kpiLabel}>Total incidente</span>
             <Icon>
               <circle cx="12" cy="12" r="9" />
               <circle cx="12" cy="12" r="4" />
               <path d="M12 3v4M21 12h-4" />
             </Icon>
           </div>
-          <strong className="kpi-value">{total}</strong>
-          <span className="kpi-sub">{active} încă active</span>
+          <strong className={styles.kpiValue}>{total}</strong>
+          <span className={styles.kpiSub}>{active} încă active</span>
         </article>
 
-        <article className="kpi-card kpi-critical">
-          <div className="kpi-top">
-            <span className="kpi-label">Critice active</span>
+        <article className={`${styles.kpiCard} ${styles.critical}`}>
+          <div className={styles.kpiTop}>
+            <span className={styles.kpiLabel}>Critice active</span>
             <Icon>
               <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" />
               <path d="M12 9v4M12 17h.01" />
             </Icon>
           </div>
-          <strong className="kpi-value">{criticeActive}</strong>
-          <span className="kpi-sub">
+          <strong className={styles.kpiValue}>{criticeActive}</strong>
+          <span className={styles.kpiSub}>
             {criticeActive > 0 ? "necesită acțiune imediată" : "nicio amenințare critică"}
           </span>
         </article>
 
-        <article className="kpi-card kpi-low">
-          <div className="kpi-top">
-            <span className="kpi-label">Remediate</span>
+        <article className={`${styles.kpiCard} ${styles.low}`}>
+          <div className={styles.kpiTop}>
+            <span className={styles.kpiLabel}>Remediate</span>
             <Icon>
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
               <path d="m9 12 2 2 4-4" />
             </Icon>
           </div>
-          <strong className="kpi-value">{remediate}</strong>
-          <span className="kpi-sub">{procentRemediat}% din total</span>
+          <strong className={styles.kpiValue}>{remediate}</strong>
+          <span className={styles.kpiSub}>{procentRemediat}% din total</span>
         </article>
 
-        <article className={`kpi-card kpi-${nivel.clasa}`}>
-          <div className="kpi-top">
-            <span className="kpi-label">Scor de risc</span>
+        <article className={`${styles.kpiCard} ${styles[nivel.clasa]}`}>
+          <div className={styles.kpiTop}>
+            <span className={styles.kpiLabel}>Scor de risc</span>
             <Icon>
               <path d="M3 12a9 9 0 0 1 18 0" />
               <path d="m12 12 4-4" />
               <circle cx="12" cy="12" r="1" />
             </Icon>
           </div>
-          <strong className="kpi-value">
+          <strong className={styles.kpiValue}>
             {scor}
             <small>/100</small>
           </strong>
-          <span className="kpi-sub">{nivel.text}</span>
+          <span className={styles.kpiSub}>{nivel.text}</span>
         </article>
       </div>
 
-      <div className="severity-card">
-        <div className="severity-head">
-          <span className="kpi-label">Distribuție pe severitate</span>
-          <span className="kpi-sub">{total} amenințări</span>
+      <div className={styles.severityCard}>
+        <div className={styles.severityHead}>
+          <span className={styles.kpiLabel}>Distribuție pe severitate</span>
+          <span className={styles.kpiSub}>{total} amenințări</span>
         </div>
         <div
-          className="severity-bar"
+          className={styles.severityBar}
           role="img"
-          aria-label={distributie.map((s) => `${s.eticheta}: ${s.numar}`).join(", ")}
+          aria-label={distributie.map((s) => `${s.label}: ${s.numar}`).join(", ")}
         >
           {distributie
             .filter((s) => s.numar > 0)
             .map((s) => (
               <span
-                key={s.cheie}
-                className={`severity-seg seg-${s.clasa}`}
+                key={s.value}
+                className={`${styles.segment} ${styles[`seg-${s.clasa}`]}`}
                 style={{ flexGrow: s.numar }}
               />
             ))}
         </div>
-        <ul className="severity-legend">
+        <ul className={styles.legend}>
           {distributie.map((s) => (
-            <li key={s.cheie}>
-              <span className={`legend-dot seg-${s.clasa}`} />
-              {s.eticheta} <strong>{s.numar}</strong>
+            <li key={s.value}>
+              <span className={`${styles.legendDot} ${styles[`seg-${s.clasa}`]}`} />
+              {s.label} <strong>{s.numar}</strong>
             </li>
           ))}
         </ul>

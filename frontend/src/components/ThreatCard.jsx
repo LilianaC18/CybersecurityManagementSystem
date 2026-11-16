@@ -1,40 +1,46 @@
-const ETICHETE_SEVERITATE = {
-  Critical: "Critică",
-  High: "Ridicată",
-  Medium: "Medie",
-  Low: "Scăzută",
-};
+import { Link } from "react-router-dom";
+import { ETICHETE_SEVERITATE, codIncident } from "../constants.js";
+import styles from "./ThreatCard.module.css";
 
 export default function ThreatCard({ amenintare, onToggle, onDelete }) {
   const clasaSeveritate = amenintare.severitate.toLowerCase();
+  // o amenințare remediată nu mai are banda de severitate
   const clasaCard = amenintare.remediat
-    ? "item-card done"
-    : `item-card card-${clasaSeveritate}`;
+    ? `${styles.card} ${styles.done}`
+    : `${styles.card} ${styles[clasaSeveritate]}`;
 
   return (
     <li className={clasaCard} data-testid="item" data-id={amenintare.id}>
-      <label className="item-main">
+      <div className={styles.main}>
         <input
           type="checkbox"
           checked={amenintare.remediat}
           onChange={() => onToggle(amenintare.id)}
+          aria-label={`Marchează ${amenintare.titlu} ca remediată`}
           data-testid="item-toggle"
         />
-        <div className="card-info">
-          <div className="card-title-row">
-            <h3 data-testid="item-title">{amenintare.titlu}</h3>
+        <div className={styles.info}>
+          <div className={styles.titleRow}>
+            {/* titlul duce la pagina de detaliu, fără reîncărcare */}
+            <Link
+              to={`/amenintari/${amenintare.id}`}
+              className={styles.title}
+              data-testid="item-link"
+            >
+              {amenintare.titlu}
+            </Link>
             <span className={`badge badge-${clasaSeveritate}`}>
               {ETICHETE_SEVERITATE[amenintare.severitate]}
             </span>
           </div>
-          <span className="incident-id">
-            INC-{String(amenintare.id).padStart(4, "0")}
+          <span className={styles.incidentId}>
+            {codIncident(amenintare.id)}
             {amenintare.sursa && <> &bull; {amenintare.sursa}</>}
           </span>
         </div>
-      </label>
+      </div>
 
-      <div className="card-actions">
+      <div className={styles.actions}>
         {amenintare.remediat ? (
           <span className="status status-resolved">✓ Remediat</span>
         ) : (

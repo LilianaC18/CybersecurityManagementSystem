@@ -1,0 +1,225 @@
+/* Antet, navigație și subsol, comune tuturor paginilor */
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  position: relative;
+  overflow: hidden;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  padding: 32px 20px 20px;
+}
+
+/* Fundal tehnic: grid fin, estompat spre margini */
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 70% 90% at 50% 0%, #000 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 90% at 50% 0%, #000 30%, transparent 100%);
+  pointer-events: none;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -120px;
+  width: 520px;
+  height: 260px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, var(--brand-red-glow), transparent 70%);
+  opacity: var(--header-glow);
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.brandBadge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--brand-red);
+  background: var(--brand-badge-bg);
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--brand-badge-border);
+}
+
+.pulseDot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--brand-red);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--brand-red);
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.6; }
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 12px 0 8px;
+}
+
+.heroShield {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 8px var(--brand-red-glow));
+}
+
+.title {
+  margin: 0;
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--header-text);
+}
+
+.desc {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Navigația: file în formă de pastilă, pagina curentă în roșu */
+.nav {
+  display: inline-flex;
+  gap: 4px;
+  margin-top: 20px;
+  padding: 4px;
+  background: var(--counter-bg);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+}
+
+.link {
+  padding: 6px 18px;
+  border-radius: 9999px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.link:hover {
+  color: var(--text);
+}
+
+.active,
+.active:hover {
+  background: var(--brand-red);
+  color: var(--btn-text);
+  box-shadow: var(--btn-shadow);
+}
+
+.themeToggle {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  z-index: 10;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--counter-bg);
+  color: var(--header-text);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.themeToggle:hover {
+  border-color: var(--brand-red);
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 1080px;
+  margin: 32px auto;
+  padding: 0 20px;
+}
+
+.footer {
+  text-align: center;
+  padding: 24px 20px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.footer p {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulseDot {
+    animation: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .brandBadge {
+    position: static;
+    margin-bottom: 8px;
+  }
+
+  .themeToggle {
+    position: static;
+    display: block;
+    margin: 0 0 12px auto;
+  }
+
+  .titleRow {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .heroShield {
+    width: 44px;
+    height: 44px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .main {
+    margin: 20px auto;
+  }
+}

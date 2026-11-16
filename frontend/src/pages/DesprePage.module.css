@@ -1,0 +1,27 @@
+.about {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.about h3 {
+  margin: 24px 0 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.about p,
+.about ul {
+  margin: 12px 0 0;
+}
+
+.about li + li {
+  margin-top: 6px;
+}
+
+.stack {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+}

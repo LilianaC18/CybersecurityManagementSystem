@@ -1,0 +1,116 @@
+/* Un card din listă; banda din stânga arată severitatea */
+.card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.critical::before { background: var(--badge-critical); }
+.high::before { background: var(--badge-high); }
+.medium::before { background: var(--badge-medium); }
+.low::before { background: var(--badge-low); }
+
+.card:hover {
+  background: var(--card-hover);
+  border-color: var(--card-hover-border);
+  transform: translateX(2px);
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.main input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--brand-red);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Titlul este link către pagina de detaliu */
+.title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.title:hover {
+  color: var(--brand-red);
+  text-decoration: underline;
+}
+
+.incidentId {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.done {
+  opacity: 0.55;
+  background: var(--card-done-bg);
+  border-color: var(--border);
+}
+
+.done .title {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+@media (max-width: 700px) {
+  .card {
+    flex-wrap: wrap;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: space-between;
+    padding-left: 30px;
+  }
+}

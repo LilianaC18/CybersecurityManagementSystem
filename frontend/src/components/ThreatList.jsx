@@ -1,4 +1,5 @@
 import ThreatCard from "./ThreatCard.jsx";
+import styles from "./ThreatList.module.css";
 
 export default function ThreatList({ amenintari, onToggle, onDelete }) {
   if (amenintari.length === 0) {
@@ -10,7 +11,7 @@ export default function ThreatList({ amenintari, onToggle, onDelete }) {
   }
 
   return (
-    <ul className="item-list">
+    <ul className={styles.list}>
       {amenintari.map((amenintare) => (
         <ThreatCard
           key={amenintare.id}

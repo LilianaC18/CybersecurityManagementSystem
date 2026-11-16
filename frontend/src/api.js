@@ -9,7 +9,9 @@ async function request(path, options = {}) {
     headers: { "Content-Type": "application/json", ...options.headers },
   });
   if (!res.ok) {
-    throw new Error(`Eroare server: ${res.status}`);
+    const err = new Error(`Eroare server: ${res.status}`);
+    err.status = res.status; // pagina de detaliu deosebește 404 de alte erori
+    throw err;
   }
   // 204 No Content nu are corp
   return res.status === 204 ? null : res.json();
@@ -17,6 +19,11 @@ async function request(path, options = {}) {
 
 export function fetchAmenintari() {
   return request("/amenintari");
+}
+
+// Etapa 8: un singur element, pentru pagina de detaliu
+export function fetchAmenintare(id) {
+  return request(`/amenintari/${id}`);
 }
 
 export function createAmenintare(amenintare) {

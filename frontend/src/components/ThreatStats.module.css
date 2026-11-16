@@ -1,0 +1,173 @@
+/* Panoul de indicatori de securitate (KPI) și bara de severitate */
+.strip {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.kpiCard,
+.severityCard {
+  position: relative;
+  overflow: hidden;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+}
+
+.kpiCard {
+  --kpi-accent: var(--brand-red);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.kpiCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--kpi-accent);
+}
+
+.brand { --kpi-accent: var(--brand-red); }
+.critical { --kpi-accent: var(--badge-critical); }
+.medium { --kpi-accent: var(--badge-medium); }
+.low { --kpi-accent: var(--badge-low); }
+
+.kpiTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.kpiLabel {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.kpiIcon {
+  width: 20px;
+  height: 20px;
+  color: var(--kpi-accent);
+  flex-shrink: 0;
+}
+
+.kpiValue {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.kpiValue small {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-left: 2px;
+}
+
+.kpiSub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.kpiCard:not(.brand):not(.low) .kpiSub {
+  color: var(--kpi-accent);
+  font-weight: 600;
+}
+
+/* Bara de distribuție pe severitate */
+.severityHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.severityBar {
+  display: flex;
+  gap: 3px;
+  height: 10px;
+  border-radius: 9999px;
+  overflow: hidden;
+  background: var(--counter-bg);
+}
+
+.segment {
+  flex-basis: 0;
+  transition: flex-grow 0.4s ease;
+}
+
+.seg-critical { background: var(--badge-critical); }
+.seg-high { background: var(--badge-high); }
+.seg-medium { background: var(--badge-medium); }
+.seg-low { background: var(--badge-low); }
+
+.legend {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend strong {
+  font-family: var(--font-mono);
+  color: var(--text);
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+@media (max-width: 900px) {
+  .kpiGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .strip,
+  .kpiGrid {
+    gap: 12px;
+  }
+
+  .kpiCard {
+    padding: 14px 16px;
+  }
+
+  .kpiLabel {
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+  }
+
+  .kpiValue {
+    font-size: 1.6rem;
+  }
+}
