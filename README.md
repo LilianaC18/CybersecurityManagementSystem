@@ -156,6 +156,19 @@ npm run api   # terminal 1, http://localhost:3001/amenintari
 npm run dev   # terminal 2, http://localhost:5173
 ```
 
+### Stage 7: Checklist
+
+| ID | Requirement | Where (permalink) | How to check |
+|---|---|---|---|
+| S7-R1 | controlled form: value + onChange on every field | [ThreatForm.jsx#L15-L20](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/frontend/src/components/ThreatForm.jsx#L15-L20), [ThreatForm.jsx#L79-L119](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/frontend/src/components/ThreatForm.jsx#L79-L119) | read |
+| S7-R2 | empty title shows an error, nothing is sent | [ThreatForm.jsx#L22-L41 (valideaza)](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/frontend/src/components/ThreatForm.jsx#L22-L41), [ThreatForm.jsx#L43-L50](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/frontend/src/components/ThreatForm.jsx#L43-L50) | submit empty, watch Network |
+| S7-R3 | added item shows in the list and survives refresh | [App.jsx#L49-L55 (handleAdd)](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/frontend/src/App.jsx#L49-L55), [api.js#L5-L27](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/frontend/src/api.js#L5-L27) | add, refresh |
+| S7-R4 | toggle and delete survive refresh | [App.jsx#L57-L78](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/frontend/src/App.jsx#L57-L78), [api.js#L29-L38](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/frontend/src/api.js#L29-L38) | toggle/delete, refresh |
+| S7-R5 | button disabled while sending, form cleared only on success | [ThreatForm.jsx#L53-L70](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/frontend/src/components/ThreatForm.jsx#L53-L70), [ThreatForm.jsx#L127-L129](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/frontend/src/components/ThreatForm.jsx#L127-L129) | --delay 3000; stop API and submit |
+| S7-R6 | tw.json and the data-testid attributes from table 7.3 | [tw.json](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/tw.json), [ThreatCard.jsx#L15-L50](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/frontend/src/components/ThreatCard.jsx#L15-L50), [ThreatList.jsx#L6](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/frontend/src/components/ThreatList.jsx#L6), [ThreatForm.jsx#L77-L127](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/frontend/src/components/ThreatForm.jsx#L77-L127), [App.jsx#L141-L157](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/frontend/src/App.jsx#L141-L157) | querySelectorAll in the console |
+| S7-R7 | README Stage 7 section + AI log | [README.md#L143-L157](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/README.md?plain=1#L143-L157), [ai-log/etapa-07.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/914558f743ee9364ac58e566ab0a42fa77e4abab/ai-log/etapa-07.md?plain=1) | read |
+| S7-R8 | commit "Stage 7" pushed | [commit Stage 7](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/914558f743ee9364ac58e566ab0a42fa77e4abab) | commit history |
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
