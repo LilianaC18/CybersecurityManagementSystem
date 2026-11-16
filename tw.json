@@ -1,0 +1,6 @@
+{
+  "resource": "amenintari",
+  "title": "titlu",
+  "done": "remediat",
+  "sample": { "severitate": "High", "sursa": "Network Scan" }
+}

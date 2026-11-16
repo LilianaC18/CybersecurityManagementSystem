@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import ThreatList from "./components/ThreatList.jsx";
 import ThreatStats from "./components/ThreatStats.jsx";
-import { fetchAmenintari } from "./api.js";
+import ThreatForm from "./components/ThreatForm.jsx";
+import {
+  createAmenintare,
+  deleteAmenintare,
+  fetchAmenintari,
+  updateAmenintare,
+} from "./api.js";
 import shieldImg from "./assets/shield.svg";
 
 function temaInitiala() {
@@ -11,7 +17,7 @@ function temaInitiala() {
 }
 
 export default function App() {
-  // Etapa 6: lista pornește goală, datele vin de la API (db.json)
+  // Lista pornește goală, datele vin de la API (db.json)
   const [amenintari, setAmenintari] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -26,7 +32,9 @@ export default function App() {
         const data = await fetchAmenintari();
         if (!ignore) setAmenintari(data);
       } catch (err) {
-        if (!ignore) setError(err.message);
+        if (!ignore) {
+          setError(`Nu am putut încărca datele: ${err.message}. Rulează npm run api?`);
+        }
       } finally {
         if (!ignore) setLoading(false);
       }
@@ -38,15 +46,35 @@ export default function App() {
     };
   }, []);
 
-  // În Etapa 6 modificările rămân locale: se pierd la refresh (rezolvat în Etapa 7)
-  function handleToggle(id) {
-    setAmenintari((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, remediat: !t.remediat } : t))
-    );
+  // Întâi serverul, apoi state-ul: pe ecran ajunge doar ce s-a salvat.
+  // Fără try: eroarea ajunge înapoi în formular, care o afișează.
+  async function handleAdd(amenintare) {
+    const creata = await createAmenintare(amenintare); // serverul întoarce elementul cu id
+    setAmenintari((prev) => [...prev, creata]);
+    setError(null);
   }
 
-  function handleDelete(id) {
-    setAmenintari((prev) => prev.filter((t) => t.id !== id));
+  async function handleToggle(id) {
+    const amenintare = amenintari.find((t) => t.id === id);
+    try {
+      const actualizata = await updateAmenintare(id, {
+        remediat: !amenintare.remediat,
+      });
+      setAmenintari((prev) => prev.map((t) => (t.id === id ? actualizata : t)));
+      setError(null);
+    } catch (err) {
+      setError(`Nu am putut salva modificarea: ${err.message}`);
+    }
+  }
+
+  async function handleDelete(id) {
+    try {
+      await deleteAmenintare(id);
+      setAmenintari((prev) => prev.filter((t) => t.id !== id));
+      setError(null);
+    } catch (err) {
+      setError(`Nu am putut șterge amenințarea: ${err.message}`);
+    }
   }
 
   function handleTema() {
@@ -91,9 +119,17 @@ export default function App() {
         </div>
       </header>
 
-      {!loading && !error && <ThreatStats amenintari={amenintari} />}
+      {!loading && <ThreatStats amenintari={amenintari} />}
 
       <main className="container">
+        <section className="panel">
+          <div className="panel-header">
+            <div className="panel-icon">+</div>
+            <h2>Raportează amenințare</h2>
+          </div>
+          <ThreatForm onAdd={handleAdd} />
+        </section>
+
         <section className="panel">
           <div className="panel-header">
             <div className="panel-icon shield-icon">⛨</div>
@@ -102,7 +138,9 @@ export default function App() {
 
           {loading && (
             <>
-              <p className="info">Se încarcă amenințările...</p>
+              <p className="info" data-testid="loading">
+                Se încarcă amenințările...
+              </p>
               <ul className="item-list skeleton-list" aria-hidden="true">
                 {[1, 2, 3].map((n) => (
                   <li key={n} className="skeleton-card">
@@ -114,11 +152,12 @@ export default function App() {
             </>
           )}
           {error && (
-            <p className="error">
-              Nu am putut încărca datele: {error}. Rulează <code>npm run api</code>?
+            <p className="error" role="alert" data-testid="error">
+              {error}
             </p>
           )}
-          {!loading && !error && (
+          {/* !loading, fără !error: dacă o bifare eșuează, lista rămâne pe ecran */}
+          {!loading && (
             <ThreatList
               amenintari={amenintari}
               onToggle={handleToggle}

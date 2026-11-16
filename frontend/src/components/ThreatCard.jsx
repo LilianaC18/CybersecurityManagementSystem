@@ -12,22 +12,24 @@ export default function ThreatCard({ amenintare, onToggle, onDelete }) {
     : `item-card card-${clasaSeveritate}`;
 
   return (
-    <li className={clasaCard}>
+    <li className={clasaCard} data-testid="item" data-id={amenintare.id}>
       <label className="item-main">
         <input
           type="checkbox"
           checked={amenintare.remediat}
           onChange={() => onToggle(amenintare.id)}
+          data-testid="item-toggle"
         />
         <div className="card-info">
           <div className="card-title-row">
-            <h3>{amenintare.titlu}</h3>
+            <h3 data-testid="item-title">{amenintare.titlu}</h3>
             <span className={`badge badge-${clasaSeveritate}`}>
               {ETICHETE_SEVERITATE[amenintare.severitate]}
             </span>
           </div>
           <span className="incident-id">
-              INC-{amenintare.id.toString().padStart(4, "0")} &bull; {amenintare.sursa}
+            INC-{String(amenintare.id).padStart(4, "0")}
+            {amenintare.sursa && <> &bull; {amenintare.sursa}</>}
           </span>
         </div>
       </label>
@@ -45,6 +47,7 @@ export default function ThreatCard({ amenintare, onToggle, onDelete }) {
           className="btn-danger"
           onClick={() => onDelete(amenintare.id)}
           aria-label={`Șterge ${amenintare.titlu}`}
+          data-testid="item-delete"
         >
           Șterge
         </button>

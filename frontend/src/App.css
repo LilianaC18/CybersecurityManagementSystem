@@ -285,8 +285,8 @@ body {
   margin: 32px auto;
   padding: 0 20px;
   display: grid;
-  /* Etapa 3: doar panoul cu date; a doua coloană revine în Etapa 7 */
-  grid-template-columns: 1fr;
+  /* Etapa 7: formularul în stânga, lista în dreapta */
+  grid-template-columns: 1fr 2fr;
   gap: 24px;
   align-items: start;
   flex: 1;
@@ -956,4 +956,32 @@ body {
   .kpi-value {
     font-size: 1.6rem;
   }
+}
+
+/* Etapa 7: buton dezactivat cât timp se trimite */
+.item-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.item-form button:disabled:hover {
+  background: var(--brand-red);
+}
+
+/* Etapa 7: câmpul greșit este marcat cu roșu */
+.item-form input[aria-invalid="true"],
+.item-form select[aria-invalid="true"] {
+  border-color: var(--badge-critical);
+  box-shadow: 0 0 0 3px var(--badge-critical-bg);
+}
+
+/* Etapa 7: mesajul de eroare din formular, aliniat cu câmpurile */
+.item-form .error {
+  font-size: 0.88rem;
+}
+
+.panel > .error {
+  margin-bottom: 16px;
 }

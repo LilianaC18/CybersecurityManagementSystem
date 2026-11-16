@@ -24,7 +24,7 @@ For the React app (from stage 3), see the How to run section under Stage 3.
 | Tool | Used for |
 | -------------- | ----------------------------------------- |
 | Gemini | Assistance with domain mapping (adapting the Cybersecurity Management System database project to Stage 1 & Stage 2), semantic HTML layout, CSS styling architecture, implementing immutable helper functions in plain JavaScript, fixing Vite/npm setup errors (stage 3), React components and props (stage 4), React state and the light/dark toggle (stage 5) explaining code sections that I did not fully understand. |
-| Claude | Stage 5: reviewing the project, finding a Windows-only npm package that broke `npm install` on macOS/Linux, a narrow-screen layout fix, git rev-parse HEAD command which is extremely helpful, help with checking my overall project against the checklist; Stage 6: loading the list from json-server with `useEffect` (loading / error states), fixing the oversized header shield, project review |
+| Claude | Stage 5: reviewing the project, finding a Windows-only npm package that broke `npm install` on macOS/Linux, a narrow-screen layout fix, git rev-parse HEAD command which is extremely helpful, help with checking my overall project against the checklist; Stage 6: loading the list from json-server with `useEffect` (loading / error states), fixing the oversized header shield, project review; Stage 7: the controlled form with validation, saving add / toggle / delete through the API, `tw.json` and the `data-testid` attributes, end-to-end testing |
 
 Details per stage: see the ai-log/ folder.
 
@@ -140,6 +140,22 @@ npm run dev   # terminal 2, http://localhost:5173
 | S6-R6 | README Stage 6 section + AI log | [README.md#L118-L129](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/f2b0050914b0b2ee31c9db136b9a4fce33d840d9/README.md?plain=1#L118-L129), [ai-log/etapa-06.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/f2b0050914b0b2ee31c9db136b9a4fce33d840d9/ai-log/etapa-06.md?plain=1) | read |
 | S6-R7 | commit "Stage 6" pushed | [commit Stage 6](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/f2b0050914b0b2ee31c9db136b9a4fce33d840d9) | commit history |
 
+## Stage 7: form and validation
+Threats can be reported from the page. The form (`ThreatForm`) is controlled
+and validated: the name is required (max 100 characters), the severity must be
+one of Critical / High / Medium / Low and the optional source has at most
+50 characters. Every change (add, toggle, delete) goes to the API first and
+shows up in the list only after the server confirmed it, so it survives a
+refresh. The button is disabled while saving, and the typed text is kept if
+the save fails. `tw.json` (repository root) and the `data-testid` attributes
+prepare the app for the automatic check.
+
+```
+cd frontend
+npm run api   # terminal 1, http://localhost:3001/amenintari
+npm run dev   # terminal 2, http://localhost:5173
+```
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
@@ -147,4 +163,5 @@ npm run dev   # terminal 2, http://localhost:5173
 - [x] Stage 4: components rendered from data
 - [x] Stage 5: local state and events
 - [x] Stage 6: data from a mock API
-- [ ] Stage 7: form and validation
+- [x] Stage 7: form and validation
+- [ ] Stage 8: routing and detail page
