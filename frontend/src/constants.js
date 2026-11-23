@@ -1,5 +1,6 @@
 // Valorile fixe pentru severitate și etichetele lor, într-un singur loc.
-// value: cheia din db.json; clasa: numele folosit în CSS;
+// value: valoarea salvată pe server (aceeași listă ca în backend/src/validation.js);
+// clasa: numele folosit în CSS;
 // pondere: greutatea în scorul de risc; termen: termenul țintă de remediere.
 export const SEVERITATI = [
   { value: "Critical", label: "Critică", cvss: "CVSS 9.0+", clasa: "critical", pondere: 10, termen: "24 de ore" },

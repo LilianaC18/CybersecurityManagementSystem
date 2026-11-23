@@ -24,7 +24,7 @@ For the React app (from stage 3), see the How to run section under Stage 3.
 | Tool | Used for |
 | -------------- | ----------------------------------------- |
 | Gemini | Assistance with domain mapping (adapting the Cybersecurity Management System database project to Stage 1 & Stage 2), semantic HTML layout, CSS styling architecture, implementing immutable helper functions in plain JavaScript, fixing Vite/npm setup errors (stage 3), React components and props (stage 4), React state and the light/dark toggle (stage 5) explaining code sections that I did not fully understand. |
-| Claude | Stage 5: reviewing the project, finding a Windows-only npm package that broke `npm install` on macOS/Linux, a narrow-screen layout fix, git rev-parse HEAD command which is extremely helpful, help with checking my overall project against the checklist; Stage 6: loading the list from json-server with `useEffect` (loading / error states), fixing the oversized header shield, project review; Stage 7: the controlled form with validation, saving add / toggle / delete through the API, `tw.json` and the `data-testid` attributes, end-to-end testing; Stage 8: React Router pages and the detail page, moving the styles to CSS Modules |
+| Claude | Stage 5: reviewing the project, finding a Windows-only npm package that broke `npm install` on macOS/Linux, a narrow-screen layout fix, git rev-parse HEAD command which is extremely helpful, help with checking my overall project against the checklist; Stage 6: loading the list from json-server with `useEffect` (loading / error states), fixing the oversized header shield, project review; Stage 7: the controlled form with validation, saving add / toggle / delete through the API, `tw.json` and the `data-testid` attributes, end-to-end testing; Stage 8: React Router pages and the detail page, moving the styles to CSS Modules; Stage 9: the Express backend (routes, server side validation, CORS, error handling), removing json-server, testing the API with curl and the app end-to-end |
 
 Details per stage: see the ai-log/ folder.
 
@@ -211,6 +211,59 @@ npm run dev   # terminal 2, http://localhost:5173
 | S8-R7 | README Stage 8 section + AI log | [README.md#L172-L199](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/89a4db3298d21255664626a346d41da41d9204f5/README.md?plain=1#L172-L199), [ai-log/etapa-08.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/89a4db3298d21255664626a346d41da41d9204f5/ai-log/etapa-08.md?plain=1) | read |
 | S8-R8 | commit "Stage 8" pushed | [commit Stage 8](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/89a4db3298d21255664626a346d41da41d9204f5) | commit history |
 
+## Stage 9: own backend
+json-server is gone. The API is an Express 5 server in `backend/`, with REST
+routes, server side validation and CORS. Data is still kept in memory and
+resets on restart (stage 10 moves it to MariaDB). The frontend works as
+before; `api.js` now reads the `{ "error": "..." }` message sent by the
+server, so the detail page of a missing id shows "Amenințarea nu există".
+`frontend/db.json`, the `api` script and the `json-server` package were
+removed from `frontend/`.
+
+| Method and route | Success | Errors |
+| --- | --- | --- |
+| `GET /amenintari` | 200, the list | |
+| `GET /amenintari/:id` | 200, one threat | 400 invalid id, 404 missing |
+| `POST /amenintari` | 201, the new threat with its id | 400 invalid data |
+| `PATCH /amenintari/:id` | 200, the changed threat | 400, 404 |
+| `DELETE /amenintari/:id` | 204, no body | 400, 404 |
+| `GET /health` | 200, `{ "status": "ok" }` | |
+
+The server checks everything it receives (`backend/src/validation.js`):
+`titlu` is required, at most 100 characters; `severitate` is one of
+Critical / High / Medium / Low (the same list as `frontend/src/constants.js`,
+default Medium); `remediat` is true or false (default false); `sursa` is
+optional text, at most 50 characters. Any other field (`id`, `user_id`, ...)
+is ignored. Every error has the same shape: `{ "error": "..." }`.
+
+`app.js` (middleware, routes, 404, error handler) is separate from
+`server.js` (starts the server on `PORT`, default 3001). The allowed origin
+is read from `CORS_ORIGIN` (default `http://localhost:5173`), see
+`backend/.env.example`.
+
+### How to run
+```
+cd backend && npm install && npm run dev     # terminal 1, port 3001
+cd frontend && npm install && npm run dev    # terminal 2, port 5173
+```
+Check that the API runs: open http://localhost:3001/health
+
+### Testing the API with curl (Git Bash)
+```
+curl -s -w ' -> %{http_code}\n' http://localhost:3001/amenintari
+curl -s -w ' -> %{http_code}\n' -X POST http://localhost:3001/amenintari \
+  -H "Content-Type: application/json" \
+  -d '{"titlu":"Din curl","severitate":"High","sursa":"Network Scan"}'
+curl -s -w ' -> %{http_code}\n' http://localhost:3001/amenintari/6
+curl -s -w ' -> %{http_code}\n' -X PATCH http://localhost:3001/amenintari/6 \
+  -H "Content-Type: application/json" -d '{"remediat":true}'
+curl -s -w ' -> %{http_code}\n' -X DELETE http://localhost:3001/amenintari/6
+curl -s -w ' -> %{http_code}\n' http://localhost:3001/amenintari/6
+curl -s -w ' -> %{http_code}\n' -X POST http://localhost:3001/amenintari \
+  -H "Content-Type: application/json" -d '{"titlu":""}'
+```
+Expected codes: 200, 201, 200, 200, 204, 404, 400.
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
@@ -220,4 +273,5 @@ npm run dev   # terminal 2, http://localhost:5173
 - [x] Stage 6: data from a mock API
 - [x] Stage 7: form and validation
 - [x] Stage 8: routing and detail page
-- [ ] Stage 9: own backend with Express
+- [x] Stage 9: own backend with Express
+- [ ] Stage 10: MariaDB and full CRUD

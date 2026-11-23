@@ -12,7 +12,7 @@ import styles from "./AmenintariPage.module.css";
 
 // Pagina principală: indicatorii, formularul și lista (fostul App.jsx din Etapa 7)
 export default function AmenintariPage() {
-  // Lista pornește goală, datele vin de la API (db.json)
+  // Lista pornește goală, datele vin de la API-ul Express (backend/)
   const [amenintari, setAmenintari] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -27,7 +27,7 @@ export default function AmenintariPage() {
         if (!ignore) setAmenintari(data);
       } catch (err) {
         if (!ignore) {
-          setError(`Nu am putut încărca datele: ${err.message}. Rulează npm run api?`);
+          setError(`Nu am putut încărca datele: ${err.message}. Rulează npm run dev în backend/?`);
         }
       } finally {
         if (!ignore) setLoading(false);

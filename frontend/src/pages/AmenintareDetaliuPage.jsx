@@ -46,8 +46,9 @@ export default function AmenintareDetaliuPage() {
     return (
       <section className={`panel ${styles.box}`}>
         <p className="error" role="alert" data-testid="error">
+          {/* la 404, mesajul vine de la server: { error: "Amenințarea nu există" } */}
           {error.status === 404
-            ? `Nu există nicio amenințare cu id-ul ${id}.`
+            ? `${error.message} (id ${id}).`
             : `Amenințarea nu a putut fi încărcată: ${error.message}`}
         </p>
         <Link to="/" className={styles.back}>

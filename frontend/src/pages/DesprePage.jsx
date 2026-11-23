@@ -26,8 +26,8 @@ export default function DesprePage() {
 
       <h3>Tehnologii</h3>
       <p className={styles.stack}>
-        React, Vite, React Router, CSS Modules, json-server. În etapele
-        următoare: Node.js, Express, MariaDB, Docker.
+        React, Vite, React Router, CSS Modules, Node.js, Express. În etapele
+        următoare: MariaDB, Docker.
       </p>
       <p className="info">
         Proiect de semestru la Tehnologii Web, construit pas cu pas pe parcursul
