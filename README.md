@@ -264,6 +264,18 @@ curl -s -w ' -> %{http_code}\n' -X POST http://localhost:3001/amenintari \
 ```
 Expected codes: 200, 201, 200, 200, 204, 404, 400.
 
+### Stage 9: Checklist
+
+| ID | Requirement | Where (permalink) | How to check |
+|---|---|---|---|
+| S9-R1 | npm run dev in backend/ starts the API on 3001 | [backend/package.json#L7-L10](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d375a725da2eb48675bb8710949e6a7a42e00bc7/backend/package.json#L7-L10), [server.js#L3-L7](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d375a725da2eb48675bb8710949e6a7a42e00bc7/backend/src/server.js#L3-L7) | run it, open /health |
+| S9-R2 | all five routes answer with the right codes | [routes/amenintari.js#L16-L71](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d375a725da2eb48675bb8710949e6a7a42e00bc7/backend/src/routes/amenintari.js#L16-L71) | curl commands from README |
+| S9-R3 | invalid data returns 400 with a clear message | [validation.js#L1-L66](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d375a725da2eb48675bb8710949e6a7a42e00bc7/backend/src/validation.js#L1-L66), [routes/amenintari.js#L43-L51](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d375a725da2eb48675bb8710949e6a7a42e00bc7/backend/src/routes/amenintari.js#L43-L51) | POST with empty title |
+| S9-R4 | React app works with json-server removed | [frontend/package.json#L6-L11](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d375a725da2eb48675bb8710949e6a7a42e00bc7/frontend/package.json#L6-L11), [api.js#L11-L17](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d375a725da2eb48675bb8710949e6a7a42e00bc7/frontend/src/api.js#L11-L17) | stop everything but backend |
+| S9-R5 | no CORS errors in the browser console | [app.js#L7-L9 (cors)](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d375a725da2eb48675bb8710949e6a7a42e00bc7/backend/src/app.js#L7-L9) | open console |
+| S9-R6 | README Stage 9 section + AI log | [README.md#L214-L265](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d375a725da2eb48675bb8710949e6a7a42e00bc7/README.md?plain=1#L214-L265), [ai-log/etapa-09.md](https://github.com/LilianaC18/CybersecurityManagementSystem/blob/d375a725da2eb48675bb8710949e6a7a42e00bc7/ai-log/etapa-09.md?plain=1) | read |
+| S9-R7 | commit "Stage 9" pushed | [commit Stage 9](https://github.com/LilianaC18/CybersecurityManagementSystem/commit/d375a725da2eb48675bb8710949e6a7a42e00bc7) | commit history |
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
